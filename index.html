@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DegenPrimeShop – Pay Crypto for Prime, Ship Anywhere</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Rajdhani:wght@600&display=swap" rel="stylesheet">
+    <!-- Geoapify Autocomplete CSS -->
+    <link rel="stylesheet" href="https://cdn.geoapify.com/v1/autocomplete/1.0.0/autocomplete.min.css">
     <style>
         :root {
             --bg-gradient: linear-gradient(135deg, #1a001a, #2e003e, #120026);
@@ -60,7 +62,7 @@
             position: absolute;
             top: 30px;
             left: 30px;
-            width: 200px; /* Smaller, balanced size */
+            width: 200px;
             z-index: 3;
             animation: float 10s ease-in-out infinite;
             filter: drop-shadow(0 0 30px #b94eff);
@@ -73,7 +75,7 @@
         }
         @media (max-width: 768px) {
             .mascot { 
-                width: 140px; /* Smaller on mobile */
+                width: 140px;
                 left: 20px; 
                 top: 20px;
             }
@@ -207,12 +209,22 @@
             z-index: 2;
             position: relative;
         }
+        /* Geoapify input styling to match site */
+        .geoapify-autocomplete-input {
+            width: 100%;
+            padding: 18px;
+            border-radius: 15px;
+            border: 2px solid var(--neon-purple);
+            background: rgba(0,0,0,0.5);
+            color: white;
+            font-size: 1.2rem;
+        }
     </style>
 </head>
 <body>
     <canvas id="particles"></canvas>
 
-    <!-- Your ape – replace with your direct Imgur .jpg link -->
+    <!-- Your Degen Astronaut Ape -->
     <img src="https://i.imgur.com/iCSf4WT.jpeg" alt="Degen Astronaut Ape" class="mascot">
 
     <header>
@@ -228,7 +240,7 @@
 
         <div class="input-group">
             <label>Your Shipping Destination</label>
-            <input type="text" id="destination" placeholder="Enter your shipping address">
+            <div id="autocomplete-container"></div>
         </div>
 
         <div class="input-group">
@@ -308,3 +320,28 @@
         });
 
         // Mock quote trigger
+        document.getElementById('amazonLink').addEventListener('input', function() {
+            if (this.value.length > 10) {
+                document.getElementById('quote').style.display = 'block';
+            }
+        });
+    </script>
+
+    <!-- Geoapify Autocomplete -->
+    <script src="https://cdn.geoapify.com/v1/autocomplete/1.0.0/autocomplete.min.js"></script>
+    <script>
+        const autocomplete = new geoapify.Autocomplete({
+            apiKey: "3eac4ad3a80c41b4b97aa5aa5cd9f277",
+            container: "autocomplete-container",
+            placeholder: "Start typing your address (e.g., Dubai, UAE)",
+            type: "address",
+            lang: "en",
+            limit: 5
+        });
+
+        autocomplete.on('select', (location) => {
+            console.log("Selected address:", location);
+        });
+    </script>
+</body>
+</html>
