@@ -249,7 +249,7 @@
             <p>Service Fee: +$80.00 (We Eat Too)</p>
             <p>Shipping (DHL Express): +$65.00</p>
             <p class="total">Total: 1,444.00 USD</p>
-            <button class="cta-button">APE INTO PAYMENT</button>
+            <button class="cta-button" onclick="createNOWPayment()">APE INTO PAYMENT</button>
         </div>
 
         <div class="wallet-tease">
@@ -312,6 +312,43 @@
                 document.getElementById('quote').style.display = 'block';
             }
         });
+    </script>
+
+    <!-- NOWPayments Checkout -->
+    <script>
+        function createNOWPayment() {
+            const amount = 1.00; // Test $1 — change to dynamic total later
+            const currency = "usd";
+            const orderId = "degen-" + Date.now();
+            const description = "DegenPrimeShop test order";
+
+            const payload = {
+                price_amount: amount,
+                price_currency: currency,
+                order_id: orderId,
+                order_description: description,
+                success_url: window.location.href + "?status=success",
+                cancel_url: window.location.href + "?status=cancel"
+            };
+
+            fetch("https://api.nowpayments.io/v1/invoice", {
+                method: "POST",
+                headers: {
+                    "x-api-key": "T3YZ6E7-SY04G8C-PQG4DJ3-SE9N0QZ",
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(payload)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.invoice_url) {
+                    window.location.href = data.invoice_url;
+                } else {
+                    alert("Invoice error: " + JSON.stringify(data));
+                }
+            })
+            .catch(err => alert("Error: " + err));
+        }
     </script>
 </body>
 </html>
