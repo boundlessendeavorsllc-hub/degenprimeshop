@@ -307,6 +307,7 @@
             }
         });
 
+        // Mock quote trigger
         document.getElementById('amazonLink').addEventListener('input', function() {
             if (this.value.length > 10) {
                 document.getElementById('quote').style.display = 'block';
@@ -314,13 +315,15 @@
         });
     </script>
 
-    <!-- NOWPayments Checkout -->
+    <!-- NOWPayments Checkout (dynamic total) -->
     <script>
         function createNOWPayment() {
-            const amount = 1444.00; // Test total — make dynamic later
+            const totalText = document.querySelector('.total').innerText;
+            const amount = parseFloat(totalText.replace('Total: ', '').replace(' USD', '')) || 1.00; // Fallback to 1 if not found
+
             const currency = "usd";
             const orderId = "degen-" + Date.now();
-            const description = "DegenPrimeShop order – MacBook Air M3";
+            const description = "DegenPrimeShop order";
 
             const payload = {
                 price_amount: amount,
