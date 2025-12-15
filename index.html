@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DegenPrimeShop – Pay Crypto for Prime, Ship Anywhere</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Rajdhani:wght@600&display=swap" rel="stylesheet">
-    <!-- Geoapify Autocomplete CSS -->
-    <link rel="stylesheet" href="https://cdn.geoapify.com/v1/autocomplete/1.0.0/autocomplete.min.css">
     <style>
         :root {
             --bg-gradient: linear-gradient(135deg, #1a001a, #2e003e, #120026);
@@ -209,15 +207,6 @@
             z-index: 2;
             position: relative;
         }
-        .geoapify-autocomplete-input {
-            width: 100%;
-            padding: 18px;
-            border-radius: 15px;
-            border: 2px solid var(--neon-purple);
-            background: rgba(0,0,0,0.5);
-            color: white;
-            font-size: 1.2rem;
-        }
     </style>
 </head>
 <body>
@@ -239,7 +228,7 @@
 
         <div class="input-group">
             <label>Your Shipping Destination</label>
-            <div id="autocomplete-container"></div>
+            <input type="text" id="destination" placeholder="Start typing your address (e.g., Dubai, UAE)">
         </div>
 
         <div class="input-group">
@@ -322,19 +311,6 @@
             if (this.value.length > 10) {
                 document.getElementById('quote').style.display = 'block';
             }
-        });
-    </script>
-
-    <!-- Geoapify Autocomplete -->
-    <script src="https://cdn.geoapify.com/v1/autocomplete/1.0.0/autocomplete.min.js"></script>
-    <script>
-        const autocomplete = new geoapify.Autocomplete({
-            apiKey: "3eac4ad3a80c41b4b97aa5aa5cd9f277",
-            container: "autocomplete-container",
-            placeholder: "Start typing your address (e.g., Dubai, UAE)",
-            type: "address",
-            lang: "en",
-            limit: 5
         });
     </script>
 </body>
