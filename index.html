@@ -8,14 +8,213 @@
     <!-- Geoapify Autocomplete CSS -->
     <link rel="stylesheet" href="https://cdn.geoapify.com/v1/autocomplete/1.0.0/autocomplete.min.css">
     <style>
-        /* All previous purple cosmic styles — same as last full code */
-        /* (background, header, mascot, calculator, hold disclaimer, how-section, footer) */
-        /* Omitted for brevity, but keep them from your current code */
+        :root {
+            --bg-gradient: linear-gradient(135deg, #1a001a, #2e003e, #120026);
+            --neon-purple: #b94eff;
+            --neon-accent: #e0aaff;
+            --glass-bg: rgba(26, 0, 26, 0.6);
+            --glass-border: rgba(185, 78, 255, 0.4);
+            --text-glow: 0 0 30px rgba(185, 78, 255, 0.9);
+            --button-glow: 0 0 40px rgba(185, 78, 255, 0.8);
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Rajdhani', sans-serif;
+            background: var(--bg-gradient);
+            color: #e6ccff;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+        #particles {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        header {
+            text-align: center;
+            padding: 60px 20px 30px;
+            position: relative;
+            z-index: 2;
+        }
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 4.5rem;
+            background: linear-gradient(to right, #b94eff, #e0aaff, #9d4edd);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: var(--text-glow);
+            margin: 0;
+            animation: pulse 5s infinite alternate;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.9; }
+            100% { transform: scale(1.08); opacity: 1; }
+        }
+        .tagline {
+            font-size: 1.9rem;
+            margin: 20px 0;
+            text-shadow: 0 0 15px var(--neon-purple);
+        }
+        .mascot {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            width: 200px;
+            z-index: 3;
+            animation: float 10s ease-in-out infinite;
+            filter: drop-shadow(0 0 30px #b94eff);
+            border-radius: 20px;
+        }
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0); }
+        }
+        @media (max-width: 768px) {
+            .mascot { 
+                width: 140px;
+                left: 20px; 
+                top: 20px;
+            }
+            header { padding-top: 160px; }
+            h1 { font-size: 3.5rem; }
+            .tagline { font-size: 1.5rem; }
+        }
+        .calculator-card {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 50px;
+            background: var(--glass-bg);
+            border-radius: 25px;
+            border: 2px solid var(--glass-border);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 15px 50px rgba(185, 78, 255, 0.3);
+            position: relative;
+            z-index: 2;
+        }
+        .input-group {
+            margin-bottom: 35px;
+        }
+        label {
+            display: block;
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            color: var(--neon-accent);
+            text-shadow: 0 0 10px var(--neon-purple);
+        }
+        input, select {
+            width: 100%;
+            padding: 18px;
+            border-radius: 15px;
+            border: 2px solid var(--neon-purple);
+            background: rgba(0,0,0,0.5);
+            color: white;
+            font-size: 1.2rem;
+        }
+        .quote-output {
+            margin-top: 50px;
+            padding: 40px;
+            background: rgba(0,0,0,0.4);
+            border-radius: 20px;
+            border: 2px solid var(--neon-purple);
+            text-align: center;
+            display: none;
+        }
+        .total {
+            font-size: 3rem;
+            font-family: 'Orbitron';
+            color: var(--neon-accent);
+            text-shadow: var(--text-glow);
+        }
+        .cta-button {
+            display: block;
+            margin: 50px auto 0;
+            padding: 20px 80px;
+            font-size: 1.8rem;
+            font-family: 'Orbitron';
+            background: linear-gradient(to right, #b94eff, #e0aaff);
+            color: black;
+            border: none;
+            border-radius: 60px;
+            cursor: pointer;
+            box-shadow: var(--button-glow);
+        }
+        .cta-button:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 0 60px rgba(224, 170, 255, 0.9);
+        }
+        .wallet-tease {
+            margin: 40px auto 0;
+            padding: 20px;
+            max-width: 800px;
+            background: rgba(0,0,0,0.3);
+            border-radius: 15px;
+            border: 2px dashed var(--neon-purple);
+            text-align: center;
+            font-size: 1.4rem;
+        }
+        .hold-disclaimer {
+            margin: 40px auto 0;
+            padding: 20px;
+            max-width: 800px;
+            background: rgba(0,0,0,0.3);
+            border-radius: 15px;
+            border: 1px dashed var(--neon-purple);
+            text-align: center;
+            font-size: 1.1rem;
+        }
+        .how-section {
+            max-width: 1000px;
+            margin: 80px auto;
+            padding: 40px;
+            text-align: center;
+            z-index: 2;
+            position: relative;
+        }
+        .how-section h2 {
+            font-family: 'Orbitron';
+            font-size: 3rem;
+            color: var(--neon-accent);
+            text-shadow: var(--text-glow);
+            margin-bottom: 60px;
+        }
+        .steps {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+        }
+        .step {
+            flex: 1;
+            min-width: 250px;
+            padding: 30px;
+            background: var(--glass-bg);
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+        }
+        .step h3 {
+            font-size: 1.8rem;
+            color: var(--neon-purple);
+            margin-bottom: 15px;
+        }
+        footer {
+            text-align: center;
+            padding: 60px;
+            font-size: 1rem;
+            opacity: 0.7;
+            z-index: 2;
+            position: relative;
+        }
+        /* Geoapify input styling */
         .geoapify-autocomplete-input {
             width: 100%;
             padding: 18px;
             border-radius: 15px;
-            border: 2px solid #b94eff;
+            border: 2px solid var(--neon-purple);
             background: rgba(0,0,0,0.5);
             color: white;
             font-size: 1.2rem;
@@ -25,7 +224,7 @@
 <body>
     <canvas id="particles"></canvas>
 
-    <!-- Your ape -->
+    <!-- Your Degen Astronaut Ape -->
     <img src="https://i.imgur.com/iCSf4WT.jpeg" alt="Degen Astronaut Ape" class="mascot">
 
     <header>
@@ -41,7 +240,7 @@
 
         <div class="input-group">
             <label>Your Shipping Destination</label>
-            <div id="autocomplete-container"></div> <!-- Geoapify field -->
+            <div id="autocomplete-container"></div>
         </div>
 
         <div class="input-group">
@@ -56,18 +255,79 @@
             </select>
         </div>
 
-        <!-- Quote output, button, tease, disclaimer from previous -->
+        <div class="quote-output" id="quote">
+            <p>Item: MacBook Air M3 (Degen Flex Approved)</p>
+            <p>Amazon Price: $1,299.00</p>
+            <p>Service Fee: +$80.00 (We Eat Too)</p>
+            <p>Shipping (DHL Express): +$65.00</p>
+            <p class="total">Total: 1,444.00 USD</p>
+            <button class="cta-button">APE INTO PAYMENT</button>
+        </div>
 
+        <div class="wallet-tease">
+            <strong>Degen Mode: Pay with Any Token (Wallet Connect) – Coming Soon</strong><br>
+            Rabby • MetaMask • Phantom • No Limits
+        </div>
+
+        <div class="hold-disclaimer">
+            <strong>Processing Hold Policy:</strong> Crypto payment confirmed? We manually secure your Prime item on Amazon. 
+            Orders may take up to <strong>24 hours</strong> to process (verification, purchase, execution). 
+            Your gadget ships shortly after—tracking incoming. No rugs, pure degen delivery. 💜
+        </div>
     </div>
 
-    <!-- How It Works and footer -->
+    <div class="how-section">
+        <h2>How It Works – Simple As Aping a Meme</h2>
+        <div class="steps">
+            <div class="step">
+                <h3>1. Paste Prime Link</h3>
+                <p>Grab any Amazon Prime gadget link. We check it's Prime (free US ship = based).</p>
+            </div>
+            <div class="step">
+                <h3>2. Get Instant Quote</h3>
+                <p>See total in your fave crypto. No volatility rugs—locked rate.</p>
+            </div>
+            <div class="step">
+                <h3>3. Pay with Crypto</h3>
+                <p>NOWPayments invoice → send from wallet. 300+ coins, whatever you're holding.</p>
+            </div>
+            <div class="step">
+                <h3>4. We Handle the Rest</h3>
+                <p>We buy it, receive in US, forward worldwide. Door-to-door degen delivery.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        © 2025 DegenPrimeShop.com — For Degens, By Degens | Purple Mode Activated 💜
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <script>
-        // Particles and quote trigger from previous
+        particlesJS("particles", {
+            "particles": {
+                "number": { "value": 100 },
+                "color": { "value": ["#b94eff", "#e0aaff", "#9d4edd"] },
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.6, "random": true },
+                "size": { "value": 4, "random": true },
+                "line_linked": { "enable": true, "distance": 180, "color": "#b94eff", "opacity": 0.5, "width": 1.5 },
+                "move": { "enable": true, "speed": 3, "direction": "none", "random": true }
+            },
+            "interactivity": {
+                "events": { "onhover": { "enable": true, "mode": "repulse" }, "onclick": { "enable": true, "mode": "push" } }
+            }
+        });
+
+        // Mock quote trigger
+        document.getElementById('amazonLink').addEventListener('input', function() {
+            if (this.value.length > 10) {
+                document.getElementById('quote').style.display = 'block';
+            }
+        });
     </script>
 
-    <!-- Geoapify Script -->
+    <!-- Geoapify Autocomplete -->
     <script src="https://cdn.geoapify.com/v1/autocomplete/1.0.0/autocomplete.min.js"></script>
     <script>
         const autocomplete = new geoapify.Autocomplete({
@@ -77,6 +337,10 @@
             type: "address",
             lang: "en",
             limit: 5
+        });
+
+        autocomplete.on('select', (location) => {
+            console.log("Selected:", location);
         });
     </script>
 </body>
