@@ -25,6 +25,12 @@
             overflow-x: hidden;
             position: relative;
         }
+        #particles {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
         header {
             text-align: center;
             padding: 60px 20px 30px;
@@ -49,6 +55,31 @@
             font-size: 1.9rem;
             margin: 20px 0;
             text-shadow: 0 0 15px var(--neon-purple);
+        }
+        .mascot {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            width: 200px; /* Balanced size */
+            z-index: 3;
+            animation: float 10s ease-in-out infinite;
+            filter: drop-shadow(0 0 30px #b94eff);
+            border-radius: 20px;
+        }
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0); }
+        }
+        @media (max-width: 768px) {
+            .mascot { 
+                width: 140px;
+                left: 20px; 
+                top: 20px;
+            }
+            header { padding-top: 160px; }
+            h1 { font-size: 3.5rem; }
+            .tagline { font-size: 1.5rem; }
         }
         .calculator-card {
             max-width: 900px;
@@ -179,6 +210,10 @@
     </style>
 </head>
 <body>
+    <canvas id="particles"></canvas>
+
+    <!-- Ape Mascot – using a placeholder until you provide a direct Imgur .jpg link -->
+    <img src="https://i.imgur.com/PLACEHOLDER.jpg" alt="Degen Astronaut Ape" class="mascot">
 
     <header>
         <h1>DegenPrimeShop</h1>
@@ -255,7 +290,24 @@
         © 2025 DegenPrimeShop.com — For Degens, By Degens | Purple Mode Activated 💜
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <script>
+        particlesJS("particles", {
+            "particles": {
+                "number": { "value": 100 },
+                "color": { "value": ["#b94eff", "#e0aaff", "#9d4edd"] },
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.6, "random": true },
+                "size": { "value": 4, "random": true },
+                "line_linked": { "enable": true, "distance": 180, "color": "#b94eff", "opacity": 0.5, "width": 1.5 },
+                "move": { "enable": true, "speed": 3, "direction": "none", "random": true }
+            },
+            "interactivity": {
+                "events": { "onhover": { "enable": true, "mode": "repulse" }, "onclick": { "enable": true, "mode": "push" } }
+            }
+        });
+
+        // Mock quote trigger
         document.getElementById('amazonLink').addEventListener('input', function() {
             if (this.value.length > 10) {
                 document.getElementById('quote').style.display = 'block';
