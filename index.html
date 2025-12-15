@@ -209,7 +209,6 @@
             z-index: 2;
             position: relative;
         }
-        /* Geoapify input styling */
         .geoapify-autocomplete-input {
             width: 100%;
             padding: 18px;
@@ -319,7 +318,6 @@
             }
         });
 
-        // Mock quote trigger
         document.getElementById('amazonLink').addEventListener('input', function() {
             if (this.value.length > 10) {
                 document.getElementById('quote').style.display = 'block';
@@ -337,10 +335,6 @@
             type: "address",
             lang: "en",
             limit: 5
-        });
-
-        autocomplete.on('select', (location) => {
-            console.log("Selected:", location);
         });
     </script>
 </body>
