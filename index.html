@@ -60,7 +60,7 @@
             position: absolute;
             top: 30px;
             left: 30px;
-            width: 200px; /* Balanced size */
+            width: 200px; /* Smaller, balanced size */
             z-index: 3;
             animation: float 10s ease-in-out infinite;
             filter: drop-shadow(0 0 30px #b94eff);
@@ -73,7 +73,7 @@
         }
         @media (max-width: 768px) {
             .mascot { 
-                width: 140px;
+                width: 140px; /* Smaller on mobile */
                 left: 20px; 
                 top: 20px;
             }
@@ -212,8 +212,8 @@
 <body>
     <canvas id="particles"></canvas>
 
-    <!-- Your new ape image from Imgur -->
-    <img src="https://i.imgur.com/3DGQeqV.jpeg" alt="Degen Astronaut Ape" class="mascot">
+    <!-- Your ape – replace with your direct Imgur .jpg link -->
+    <img src="https://i.imgur.com/PLACEHOLDER.jpg" alt="Degen Astronaut Ape" class="mascot">
 
     <header>
         <h1>DegenPrimeShop</h1>
@@ -308,11 +308,3 @@
         });
 
         // Mock quote trigger
-        document.getElementById('amazonLink').addEventListener('input', function() {
-            if (this.value.length > 10) {
-                document.getElementById('quote').style.display = 'block';
-            }
-        });
-    </script>
-</body>
-</html>
