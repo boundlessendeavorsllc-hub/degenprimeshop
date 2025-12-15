@@ -25,12 +25,6 @@
             overflow-x: hidden;
             position: relative;
         }
-        #particles {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            pointer-events: none;
-            z-index: 1;
-        }
         header {
             text-align: center;
             padding: 60px 20px 30px;
@@ -55,31 +49,6 @@
             font-size: 1.9rem;
             margin: 20px 0;
             text-shadow: 0 0 15px var(--neon-purple);
-        }
-        .mascot {
-            position: absolute;
-            top: 30px;
-            left: 30px;
-            width: 200px; /* Revised – smaller and balanced */
-            z-index: 3;
-            animation: float 10s ease-in-out infinite;
-            filter: drop-shadow(0 0 30px #b94eff);
-            border-radius: 20px;
-        }
-        @keyframes float {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
-            100% { transform: translateY(0); }
-        }
-        @media (max-width: 768px) {
-            .mascot { 
-                width: 140px; /* Smaller on mobile */
-                left: 20px; 
-                top: 20px;
-            }
-            header { padding-top: 160px; }
-            h1 { font-size: 3.5rem; }
-            .tagline { font-size: 1.5rem; }
         }
         .calculator-card {
             max-width: 900px;
@@ -191,4 +160,107 @@
             padding: 30px;
             background: var(--glass-bg);
             border-radius: 20px;
-            border: 1px solid var(--glass-border
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+        }
+        .step h3 {
+            font-size: 1.8rem;
+            color: var(--neon-purple);
+            margin-bottom: 15px;
+        }
+        footer {
+            text-align: center;
+            padding: 60px;
+            font-size: 1rem;
+            opacity: 0.7;
+            z-index: 2;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>DegenPrimeShop</h1>
+        <p class="tagline">Pay Crypto for Prime Gadgets — We Ship Anywhere, No Fiat Required</p>
+    </header>
+
+    <div class="calculator-card">
+        <div class="input-group">
+            <label>Paste Your Amazon Prime Link</label>
+            <input type="text" id="amazonLink" placeholder="https://amazon.com/dp/B0XXXXXXX">
+        </div>
+
+        <div class="input-group">
+            <label>Your Shipping Destination</label>
+            <input type="text" id="destination" placeholder="Dubai, UAE or Lagos, Nigeria">
+        </div>
+
+        <div class="input-group">
+            <label>Pay In (Degen Approved)</label>
+            <select id="crypto">
+                <option>USDC</option>
+                <option>BTC</option>
+                <option>ETH</option>
+                <option>DOGE</option>
+                <option>SHIB</option>
+                <option>SOL</option>
+            </select>
+        </div>
+
+        <div class="quote-output" id="quote">
+            <p>Item: MacBook Air M3 (Degen Flex Approved)</p>
+            <p>Amazon Price: $1,299.00</p>
+            <p>Service Fee: +$80.00 (We Eat Too)</p>
+            <p>Shipping (DHL Express): +$65.00</p>
+            <p class="total">Total: 1,444.00 USD</p>
+            <button class="cta-button">APE INTO PAYMENT</button>
+        </div>
+
+        <div class="wallet-tease">
+            <strong>Degen Mode: Pay with Any Token (Wallet Connect) – Coming Soon</strong><br>
+            Rabby • MetaMask • Phantom • No Limits
+        </div>
+
+        <div class="hold-disclaimer">
+            <strong>Processing Hold Policy:</strong> Crypto payment confirmed? We manually secure your Prime item on Amazon. 
+            Orders may take up to <strong>24 hours</strong> to process (verification, purchase, execution). 
+            Your gadget ships shortly after—tracking incoming. No rugs, pure degen delivery. 💜
+        </div>
+    </div>
+
+    <div class="how-section">
+        <h2>How It Works – Simple As Aping a Meme</h2>
+        <div class="steps">
+            <div class="step">
+                <h3>1. Paste Prime Link</h3>
+                <p>Grab any Amazon Prime gadget link. We check it's Prime (free US ship = based).</p>
+            </div>
+            <div class="step">
+                <h3>2. Get Instant Quote</h3>
+                <p>See total in your fave crypto. No volatility rugs—locked rate.</p>
+            </div>
+            <div class="step">
+                <h3>3. Pay with Crypto</h3>
+                <p>NOWPayments invoice → send from wallet. 300+ coins, whatever you're holding.</p>
+            </div>
+            <div class="step">
+                <h3>4. We Handle the Rest</h3>
+                <p>We buy it, receive in US, forward worldwide. Door-to-door degen delivery.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        © 2025 DegenPrimeShop.com — For Degens, By Degens | Purple Mode Activated 💜
+    </footer>
+
+    <script>
+        document.getElementById('amazonLink').addEventListener('input', function() {
+            if (this.value.length > 10) {
+                document.getElementById('quote').style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
