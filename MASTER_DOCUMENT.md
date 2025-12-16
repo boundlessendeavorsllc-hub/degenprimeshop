@@ -6,7 +6,8 @@
 **Goal:** Crypto-only Amazon Prime gadget forwarding — worldwide shipping, no fiat.
 
 ## Core Concept
-- Degens paste Amazon Prime link + select shipping country.
+- Degens paste Amazon Prime link.
+- Fill shipping country (dropdown).
 - Click "Get Quote" → see total (item + service fee + shipping).
 - Pay with any crypto (NOWPayments).
 - We buy & ship worldwide (full address collected after payment).
@@ -20,16 +21,9 @@
 - Track Orders button (top right, placeholder).
 - Calculator: Prime link + country dropdown.
 - "Pay with ANY crypto" note.
-- "Get Quote" button (shows quote on click).
-- Quote calculator:
-  - Amazon Price
-  - Local US Shipping: FREE (Amazon Prime)
-  - Local Sales Tax (NJ)
-  - International Shipping (user picks option)
-  - Insurance
-  - Service Fee (10%, min $40, max $100)
-  - Total Cost
+- "Get Quote" button (shows quote instantly).
 - "APE INTO PAYMENT" button (real NOWPayments, new tab).
+- Mock quote with dynamic total.
 - Hold policy with "All sales final — no returns".
 - "How It Works", footer.
 
@@ -38,7 +32,7 @@
 - Local US Shipping: FREE (Amazon Prime).
 - Local Sales Tax: NJ rate (paid by us).
 - International Shipping: Real Shippo rates + 10% hidden markup (test mode approximate).
-- Insurance: Real cost + 10% hidden markup.
+- Insurance: Real cost + 10% hidden markup (planned).
 - All sales final — no returns or refunds.
 
 ## Payments
@@ -52,11 +46,19 @@
 
 ## Planned
 - Backoffice dashboard (order tracking).
-- Real Shippo live rates.
+- Real Shippo rates.
 - Real Amazon scraping (price/title).
 - Terms & Privacy pages.
 - Domain point (degenprimeshop.com).
 - Marketing launch (Telegram/X channels).
+
+## Last Thoughts (Dec 16, 2025 – No Time to Bed)
+- Homepage tweaks paused — focus on backoffice next.
+- Shippo integration in progress (test rates showing approximate, live when paid key).
+- Quote calculator clean (free local US shipping, capped service fee, no markup text visible).
+- No returns policy locked — all sales final.
+- Backoffice will track: date, order ID, name, address, status (payment → ordered → hub → shipped), carrier tracking #.
+- Future: auto-pull tracking from Shippo API (no manual copy/paste).
 
 ## Changelog
 - Dec 16, 2025: Homepage polished — ticker bar, social icons (Telegram + X with "Coming Soon"), track orders button, ape chat bubble added.
@@ -65,5 +67,6 @@
 - Dec 16, 2025: Added "Get Quote" button for clearer UX (quote shows on click).
 - Dec 16, 2025: Quote calculator updated — local US shipping FREE, sales tax shown, markup text hidden, service fee capped at $100, "All sales final" in disclaimer.
 - Dec 16, 2025: Shippo test API integration added (real rates in test mode, fallback approximate).
+- Dec 16, 2025: Last thoughts added — backoffice planning, no returns locked, Shippo future automation.
 
 For Degens, By Degens | Purple Mode Activated 💜
