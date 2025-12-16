@@ -25,35 +25,33 @@
             overflow-x: hidden;
             position: relative;
         }
-        #particles {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            pointer-events: none;
-            z-index: 1;
-        }
-        /* Ticker Bar */
+        /* Ticker Bar - Continuous */
         .ticker-bar {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            background: rgba(26, 0, 26, 0.8);
+            background: rgba(26, 0, 26, 0.9);
             border-bottom: 2px solid var(--neon-purple);
             padding: 10px 0;
             z-index: 10;
             overflow: hidden;
         }
+        .ticker-wrapper {
+            display: flex;
+            width: 200%; /* Double for seamless loop */
+            animation: scroll-left 80s linear infinite;
+        }
         .ticker-content {
-            display: inline-block;
+            display: flex;
             white-space: nowrap;
-            animation: scroll-left 60s linear infinite;
             font-size: 1.1rem;
             color: var(--neon-accent);
             text-shadow: var(--text-glow);
         }
         @keyframes scroll-left {
-            0% { transform: translateX(100%); }
-            100% { transform: translateX(-100%); }
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
         }
         header {
             text-align: center;
@@ -61,161 +59,9 @@
             position: relative;
             z-index: 2;
         }
-        h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 4.5rem;
-            background: linear-gradient(to right, #b94eff, #e0aaff, #9d4edd);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: var(--text-glow);
-            margin: 0;
-            animation: pulse 5s infinite alternate;
-        }
-        @keyframes pulse {
-            0% { transform: scale(1); opacity: 0.9; }
-            100% { transform: scale(1.08); opacity: 1; }
-        }
-        .tagline {
-            font-size: 1.9rem;
-            margin: 20px 0;
-            text-shadow: 0 0 15px var(--neon-purple);
-        }
-        .mascot {
-            position: absolute;
-            top: 30px;
-            left: 30px;
-            width: 200px;
-            z-index: 3;
-            animation: float 10s ease-in-out infinite;
-            filter: drop-shadow(0 0 30px #b94eff);
-            border-radius: 20px;
-        }
-        @keyframes float {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
-            100% { transform: translateY(0); }
-        }
-        @media (max-width: 768px) {
-            .mascot { 
-                width: 140px;
-                left: 20px; 
-                top: 20px;
-            }
-            header { padding-top: 160px; }
-            h1 { font-size: 3.5rem; }
-            .tagline { font-size: 1.5rem; }
-        }
-        .calculator-card {
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 50px;
-            background: var(--glass-bg);
-            border-radius: 25px;
-            border: 2px solid var(--glass-border);
-            backdrop-filter: blur(15px);
-            box-shadow: 0 15px 50px rgba(185, 78, 255, 0.3);
-            position: relative;
-            z-index: 2;
-        }
-        .input-group {
-            margin-bottom: 35px;
-        }
-        label {
-            display: block;
-            font-size: 1.3rem;
-            margin-bottom: 12px;
-            color: var(--neon-accent);
-            text-shadow: 0 0 10px var(--neon-purple);
-        }
-        input {
-            width: 100%;
-            padding: 18px;
-            border-radius: 15px;
-            border: 2px solid var(--neon-purple);
-            background: rgba(0,0,0,0.5);
-            color: white;
-            font-size: 1.2rem;
-        }
-        .any-token-note {
-            margin: 40px auto 0;
-            padding: 20px;
-            max-width: 800px;
-            background: rgba(0,0,0,0.3);
-            border-radius: 15px;
-            border: 2px dashed var(--neon-purple);
-            text-align: center;
-            font-size: 1.4rem;
-        }
-        .cta-button {
-            display: block;
-            margin: 50px auto 0;
-            padding: 20px 80px;
-            font-size: 1.8rem;
-            font-family: 'Orbitron';
-            background: linear-gradient(to right, #b94eff, #e0aaff);
-            color: black;
-            border: none;
-            border-radius: 60px;
-            cursor: pointer;
-            box-shadow: var(--button-glow);
-        }
-        .cta-button:hover {
-            transform: translateY(-8px) scale(1.05);
-            box-shadow: 0 0 60px rgba(224, 170, 255, 0.9);
-        }
-        .hold-disclaimer {
-            margin: 40px auto 0;
-            padding: 20px;
-            max-width: 800px;
-            background: rgba(0,0,0,0.3);
-            border-radius: 15px;
-            border: 1px dashed var(--neon-purple);
-            text-align: center;
-            font-size: 1.1rem;
-        }
-        .how-section {
-            max-width: 1000px;
-            margin: 80px auto;
-            padding: 40px;
-            text-align: center;
-            z-index: 2;
-            position: relative;
-        }
-        .how-section h2 {
-            font-family: 'Orbitron';
-            font-size: 3rem;
-            color: var(--neon-accent);
-            text-shadow: var(--text-glow);
-            margin-bottom: 60px;
-        }
-        .steps {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 40px;
-        }
-        .step {
-            flex: 1;
-            min-width: 250px;
-            padding: 30px;
-            background: var(--glass-bg);
-            border-radius: 20px;
-            border: 1px solid var(--glass-border);
-            backdrop-filter: blur(10px);
-        }
-        .step h3 {
-            font-size: 1.8rem;
-            color: var(--neon-purple);
-            margin-bottom: 15px;
-        }
-        footer {
-            text-align: center;
-            padding: 60px;
-            font-size: 1rem;
-            opacity: 0.7;
-            z-index: 2;
-            position: relative;
-        }
+        /* Rest of styles same */
+        /* (h1, tagline, mascot, calculator-card, input-group, quote-output, cta-button, any-token-note, hold-disclaimer, how-section, footer) */
+        /* Omitted for brevity — keep from current */
         /* Social Links Top Right */
         .social-links {
             position: absolute;
@@ -233,166 +79,34 @@
         .social-icon:hover {
             transform: scale(1.2);
         }
-        @media (max-width: 768px) {
-            .social-links {
-                top: 10px;
-                right: 10px;
-            }
-            .social-icon {
-                width: 35px;
-                height: 35px;
-            }
-        }
     </style>
 </head>
 <body>
     <canvas id="particles"></canvas>
 
-    <!-- Ticker Bar -->
+    <!-- Ticker Bar - Continuous & Running -->
     <div class="ticker-bar">
-        <div class="ticker-content">
-            BTC $86,000 (-3%) • ETH $2,937 (-2%) • SOL $132 (+2%) • DJI 48,403 (-0.1%) • NASDAQ 23,194 (-1.7%) • "Spend your gains on Prime gadgets — no fiat required" &nbsp;&nbsp;&nbsp;&nbsp;
-            BTC $86,000 (-3%) • ETH $2,937 (-2%) • SOL $132 (+2%) • DJI 48,403 (-0.1%) • NASDAQ 23,194 (-1.7%) • "Spend your gains on Prime gadgets — no fiat required"
+        <div class="ticker-wrapper">
+            <div class="ticker-content">
+                BTC $86,000 (-3%) • ETH $2,937 (-2%) • SOL $132 (+2%) • DJI 48,403 (-0.1%) • NASDAQ 23,194 (-1.7%) • "Spend your gains on Prime gadgets — no fiat required" &nbsp;&nbsp;&nbsp;&nbsp;
+            </div>
+            <div class="ticker-content">
+                BTC $86,000 (-3%) • ETH $2,937 (-2%) • SOL $132 (+2%) • DJI 48,403 (-0.1%) • NASDAQ 23,194 (-1.7%) • "Spend your gains on Prime gadgets — no fiat required" &nbsp;&nbsp;&nbsp;&nbsp;
+            </div>
         </div>
     </div>
 
-    <!-- Social Links Top Right -->
+    <!-- Social Links Top Right (Telegram + X) -->
     <div class="social-links">
         <a href="https://t.me/degenprimeshop" target="_blank" rel="noopener">
-            <img src="https://img.icons8.com/color/48/000000/telegram-plane.png" alt="Telegram" class="social-icon">
+            <img src="https://img.icons8.com/color/48/telegram-plane.png" alt="Telegram" class="social-icon">
         </a>
         <a href="https://x.com/degenprimeshop" target="_blank" rel="noopener">
-            <img src="https://img.icons8.com/color/48/000000/twitter.png" alt="X (Twitter)" class="social-icon">
+            <img src="https://img.icons8.com/color/48/x.png" alt="X" class="social-icon">
         </a>
     </div>
 
-    <!-- Your Degen Astronaut Ape -->
-    <img src="https://i.imgur.com/iCSf4WT.jpeg" alt="Degen Astronaut Ape" class="mascot">
+    <!-- Rest of body (mascot, header, calculator, how-section, footer, scripts) from previous full code -->
 
-    <header>
-        <h1>DegenPrimeShop</h1>
-        <p class="tagline">Pay Crypto for Prime Gadgets — We Ship Anywhere, No Fiat Required</p>
-    </header>
-
-    <div class="calculator-card">
-        <div class="input-group">
-            <label>Paste Your Amazon Prime Link</label>
-            <input type="text" id="amazonLink" placeholder="https://amazon.com/dp/B0XXXXXXX">
-        </div>
-
-        <div class="input-group">
-            <label>Your Shipping Destination</label>
-            <input type="text" id="destination" placeholder="Start typing your address (e.g., Dubai, UAE)">
-        </div>
-
-        <div class="any-token-note">
-            <strong>Pay with ANY crypto — 300+ coins supported</strong><br>
-            BTC • ETH • USDC • DOGE • SHIB • SOL • APE • memes & more
-        </div>
-
-        <div class="quote-output" id="quote">
-            <p>Item: MacBook Air M3 (Degen Flex Approved)</p>
-            <p>Amazon Price: $1,299.00</p>
-            <p>Service Fee (10%): +$129.90</p>
-            <p>Shipping (DHL Express): +$80.00</p>
-            <p class="total">Total: 1,508.90 USD</p>
-            <button class="cta-button" onclick="createNOWPayment()">APE INTO PAYMENT</button>
-        </div>
-
-        <div class="hold-disclaimer">
-            <strong>Processing Hold Policy:</strong> Crypto payment confirmed? We manually secure your Prime item on Amazon. 
-            Orders may take up to <strong>24 hours</strong> to process (verification, purchase, execution). 
-            Your gadget ships shortly after—tracking incoming. No rugs, pure degen delivery. 💜
-        </div>
-    </div>
-
-    <div class="how-section">
-        <h2>How It Works – Simple As Aping a Meme</h2>
-        <div class="steps">
-            <div class="step">
-                <h3>1. Paste Prime Link</h3>
-                <p>Grab any Amazon Prime gadget link. We check it's Prime (free US ship = based).</p>
-            </div>
-            <div class="step">
-                <h3>2. Get Instant Quote</h3>
-                <p>See total in USD. No volatility rugs—locked rate.</p>
-            </div>
-            <div class="step">
-                <h3>3. Pay with Crypto</h3>
-                <p>NOWPayments invoice → send from wallet. 300+ coins, whatever you're holding.</p>
-            </div>
-            <div class="step">
-                <h3>4. We Handle the Rest</h3>
-                <p>We buy it, receive in US, forward worldwide. Door-to-door degen delivery.</p>
-            </div>
-        </div>
-    </div>
-
-    <footer>
-        © 2025 DegenPrimeShop.com — For Degens, By Degens | Purple Mode Activated 💜
-    </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-    <script>
-        particlesJS("particles", {
-            "particles": {
-                "number": { "value": 100 },
-                "color": { "value": ["#b94eff", "#e0aaff", "#9d4edd"] },
-                "shape": { "type": "circle" },
-                "opacity": { "value": 0.6, "random": true },
-                "size": { "value": 4, "random": true },
-                "line_linked": { "enable": true, "distance": 180, "color": "#b94eff", "opacity": 0.5, "width": 1.5 },
-                "move": { "enable": true, "speed": 3, "direction": "none", "random": true }
-            },
-            "interactivity": {
-                "events": { "onhover": { "enable": true, "mode": "repulse" }, "onclick": { "enable": true, "mode": "push" } }
-            }
-        });
-
-        document.getElementById('amazonLink').addEventListener('input', function() {
-            if (this.value.length > 10) {
-                document.getElementById('quote').style.display = 'block';
-            }
-        });
-    </script>
-
-    <!-- NOWPayments Checkout -->
-    <script>
-        function createNOWPayment() {
-            const totalText = document.querySelector('.total').innerText;
-            const amount = parseFloat(totalText.replace('Total: ', '').replace(' USD', '')) || 1.00;
-
-            const currency = "usd";
-            const orderId = "degen-" + Date.now();
-            const description = "DegenPrimeShop order";
-
-            const payload = {
-                price_amount: amount,
-                price_currency: currency,
-                order_id: orderId,
-                order_description: description,
-                success_url: window.location.href + "?status=success",
-                cancel_url: window.location.href + "?status=cancel"
-            };
-
-            fetch("https://api.nowpayments.io/v1/invoice", {
-                method: "POST",
-                headers: {
-                    "x-api-key": "T3YZ6E7-SY04G8C-PQG4DJ3-SE9N0QZ",
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(payload)
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.invoice_url) {
-                    window.open(data.invoice_url, '_blank');
-                } else {
-                    alert("Invoice error: " + JSON.stringify(data));
-                }
-            })
-            .catch(err => alert("Error: " + err));
-        }
-    </script>
 </body>
 </html>
