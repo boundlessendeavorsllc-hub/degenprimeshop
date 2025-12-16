@@ -56,10 +56,14 @@ export default async function handler(req, res) {
         const data = await response.json();
 
         if (data.rates) {
-            const rates = data.rates.filter(r => r.servicelevel.token.includes("express") || r.servicelevel.token.includes("priority") || r.servicelevel.token.includes("expedited"));
+            const rates = data.rates.filter(r => 
+                r.servicelevel.token.includes("express") || 
+                r.servicelevel.token.includes("priority") || 
+                r.servicelevel.token.includes("expedited")
+            );
             res.status(200).json(rates);
         } else {
-            res.status(500).json({ error: "No rates" });
+            res.status(500).json({ error: "No rates available" });
         }
     } catch (err) {
         res.status(500).json({ error: err.message });
