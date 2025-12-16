@@ -42,7 +42,8 @@
 - Marketing launch.
 
 ## Changelog
-- Dec 16, 2025: Homepage polished, socials/ticker/chat bubble added.
-- [Add future entries here]
+- Dec 16, 2025: Homepage polished — ticker bar, social icons (Telegram + X with "Coming Soon"), track orders button, ape chat bubble added.
+- Dec 16, 2025: Social icons fixed (correct modern X logo, no overlap, "Coming Soon" spacing improved).
+- [Future entries here]
 
 For Degens, By Degens | Purple Mode Activated 💜
