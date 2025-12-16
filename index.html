@@ -176,6 +176,9 @@
             text-align: center;
             display: none;
         }
+        .shipping-options {
+            margin: 20px 0;
+        }
         .total {
             font-size: 3rem;
             font-family: 'Orbitron';
@@ -404,7 +407,7 @@
         </div>
 
         <!-- Get Quote Button -->
-        <button class="get-quote-button" onclick="showQuote()">GET QUOTE</button>
+        <button class="get-quote-button" onclick="getQuote()">GET QUOTE</button>
 
         <!-- Quote Output -->
         <div class="quote-output" id="quote">
@@ -412,14 +415,10 @@
             <p>Local US Shipping: FREE (Amazon Prime)</p>
             <p>Local Sales Tax (NJ): $86.04</p>
             <p>International Shipping (choose option):</p>
-            <select id="shippingOption">
-                <option value="88">DHL Express - $88.00</option>
-                <option value="77">UPS Expedited - $77.00</option>
-                <option value="99">FedEx Priority - $99.00</option>
-            </select>
+            <div class="shipping-options" id="shippingOptions"></div>
             <p>Insurance: $14.30</p>
             <p>Service Fee: $100.00</p>
-            <p class="total">Total: 1,587.34 USD</p>
+            <p class="total" id="total">Total: 1,587.34 USD</p>
             <button class="cta-button" onclick="createNOWPayment()">APE INTO PAYMENT</button>
         </div>
 
@@ -474,23 +473,61 @@
             }
         });
 
-        function showQuote() {
+        async function getQuote() {
             const link = document.getElementById('amazonLink').value.trim();
             const country = document.getElementById('country').value;
 
             if (link.length > 10 && country) {
-                document.getElementById('quote').style.display = 'block';
+                try {
+                    const response = await fetch('/api/shippo', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ country })
+                    });
+
+                    const rates = await response.json();
+
+                    if (rates.error || !rates.length) {
+                        throw new Error("No rates");
+                    }
+
+                    const optionsDiv = document.getElementById('shippingOptions');
+                    optionsDiv.innerHTML = '<select id="shippingOption" onchange="updateTotal()">';
+                    rates.forEach((rate, index) => {
+                        const price = (parseFloat(rate.amount) * 1.10).toFixed(2);
+                        optionsDiv.innerHTML += `<option value="${price}" ${index === 0 ? 'selected' : ''}>${rate.servicelevel.name} - $${price}</option>`;
+                    });
+                    optionsDiv.innerHTML += '</select>';
+
+                    updateTotal();
+                    document.getElementById('quote').style.display = 'block';
+                } catch (err) {
+                    // Fallback to mock with note
+                    document.getElementById('shippingOptions').innerHTML = `
+                        <p>Shippo test mode limited — showing approximate rates:</p>
+                        <select id="shippingOption" onchange="updateTotal()">
+                            <option value="88">DHL Express - $88.00</option>
+                            <option value="77">UPS Expedited - $77.00</option>
+                            <option value="99">FedEx Priority - $99.00</option>
+                        </select>
+                    `;
+                    updateTotal();
+                    document.getElementById('quote').style.display = 'block';
+                }
             } else {
                 alert("Please paste a valid Amazon link and select a country.");
             }
         }
-    </script>
 
-    <!-- NOWPayments Checkout -->
-    <script>
+        function updateTotal() {
+            const shippingPrice = parseFloat(document.getElementById('shippingOption').value || 88);
+            const total = 1299 + 100 + 14.30 + 86.04 + shippingPrice;
+            document.getElementById('total').innerText = `Total: $${total.toFixed(2)} USD`;
+        }
+
         function createNOWPayment() {
-            const totalText = document.querySelector('.total').innerText;
-            const amount = parseFloat(totalText.replace('Total: ', '').replace(' USD', '')) || 1.00;
+            const totalText = document.getElementById('total').innerText;
+            const amount = parseFloat(totalText.replace('Total: $', '').replace(' USD', '')) || 1.00;
 
             const currency = "usd";
             const orderId = "degen-" + Date.now();
