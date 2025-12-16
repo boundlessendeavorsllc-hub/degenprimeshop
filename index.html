@@ -223,7 +223,7 @@
         </div>
 
         <!-- Big APE INTO PAYMENT button — always visible -->
-      <button class="cta-button" onclick="createNOWPayment()" target="_blank" rel="noopener noreferrer">APE INTO PAYMENT</button>
+        <button class="cta-button" onclick="createNOWPayment()">APE INTO PAYMENT</button>
 
         <div class="hold-disclaimer">
             <strong>Processing Hold Policy:</strong> Crypto payment confirmed? We manually secure your Prime item on Amazon. 
@@ -276,9 +276,9 @@
         });
     </script>
 
-    <!-- NOWPayments Checkout (test total for now) -->
+    <!-- NOWPayments Checkout -->
     <script>
-function createNOWPayment() {
+        function createNOWPayment() {
             const amount = 1.00; // Test $1 — change to dynamic later
             const currency = "usd";
             const orderId = "degen-" + Date.now();
@@ -304,7 +304,7 @@ function createNOWPayment() {
             .then(response => response.json())
             .then(data => {
                 if (data.invoice_url) {
-                    window.location.href = data.invoice_url;
+                    window.open(data.invoice_url, '_blank');
                 } else {
                     alert("Invoice error: " + JSON.stringify(data));
                 }
