@@ -144,7 +144,7 @@
             transform: translateY(-8px) scale(1.05);
             box-shadow: 0 0 60px rgba(224, 170, 255, 0.9);
         }
-        .wallet-tease {
+        .any-token-note {
             margin: 40px auto 0;
             padding: 20px;
             max-width: 800px;
@@ -231,16 +231,9 @@
             <input type="text" id="destination" placeholder="Start typing your address (e.g., Dubai, UAE)">
         </div>
 
-        <div class="input-group">
-            <label>Pay In (Degen Approved)</label>
-            <select id="crypto">
-                <option>USDC</option>
-                <option>BTC</option>
-                <option>ETH</option>
-                <option>DOGE</option>
-                <option>SHIB</option>
-                <option>SOL</option>
-            </select>
+        <div class="any-token-note">
+            <strong>Pay with ANY crypto — 300+ coins supported</strong><br>
+            BTC • ETH • USDC • DOGE • SHIB • SOL • APE • memes & more
         </div>
 
         <div class="quote-output" id="quote">
@@ -250,11 +243,6 @@
             <p>Shipping (DHL Express): +$65.00</p>
             <p class="total">Total: 1,444.00 USD</p>
             <button class="cta-button" onclick="createNOWPayment()">APE INTO PAYMENT</button>
-        </div>
-
-        <div class="wallet-tease">
-            <strong>Degen Mode: Pay with Any Token (Wallet Connect) – Coming Soon</strong><br>
-            Rabby • MetaMask • Phantom • No Limits
         </div>
 
         <div class="hold-disclaimer">
@@ -273,7 +261,7 @@
             </div>
             <div class="step">
                 <h3>2. Get Instant Quote</h3>
-                <p>See total in your fave crypto. No volatility rugs—locked rate.</p>
+                <p>See total in USD. No volatility rugs—locked rate.</p>
             </div>
             <div class="step">
                 <h3>3. Pay with Crypto</h3>
@@ -307,7 +295,6 @@
             }
         });
 
-        // Mock quote trigger
         document.getElementById('amazonLink').addEventListener('input', function() {
             if (this.value.length > 10) {
                 document.getElementById('quote').style.display = 'block';
@@ -319,7 +306,7 @@
     <script>
         function createNOWPayment() {
             const totalText = document.querySelector('.total').innerText;
-            const amount = parseFloat(totalText.replace('Total: ', '').replace(' USD', '')) || 1.00; // Fallback to 1 if not found
+            const amount = parseFloat(totalText.replace('Total: ', '').replace(' USD', '')) || 1.00;
 
             const currency = "usd";
             const orderId = "degen-" + Date.now();
