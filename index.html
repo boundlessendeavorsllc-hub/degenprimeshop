@@ -25,7 +25,7 @@
             overflow-x: hidden;
             position: relative;
         }
-        /* Ticker Bar */
+        /* Ticker Bar - Continuous */
         .ticker-bar {
             position: fixed;
             top: 0;
@@ -153,6 +153,23 @@
             border: 2px dashed var(--neon-purple);
             text-align: center;
             font-size: 1.4rem;
+        }
+        .get-quote-button {
+            display: block;
+            margin: 40px auto 0;
+            padding: 20px 80px;
+            font-size: 1.8rem;
+            font-family: 'Orbitron';
+            background: linear-gradient(to right, #b94eff, #e0aaff);
+            color: black;
+            border: none;
+            border-radius: 60px;
+            cursor: pointer;
+            box-shadow: var(--button-glow);
+        }
+        .get-quote-button:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 0 60px rgba(224, 170, 255, 0.9);
         }
         .quote-output {
             margin-top: 50px;
@@ -405,6 +422,10 @@
             BTC • ETH • USDC • DOGE • SHIB • SOL • APE • memes & more
         </div>
 
+        <!-- Get Quote Button -->
+        <button class="get-quote-button" onclick="showQuote()">GET QUOTE</button>
+
+        <!-- Quote Output -->
         <div class="quote-output" id="quote">
             <p>Item: MacBook Air M3 (Degen Flex Approved)</p>
             <p>Amazon Price: $1,299.00</p>
@@ -464,11 +485,17 @@
             }
         });
 
-        document.getElementById('amazonLink').addEventListener('input', function() {
-            if (this.value.length > 10) {
+        function showQuote() {
+            const link = document.getElementById('amazonLink').value.trim();
+            const country = document.getElementById('country').value;
+            const address = document.getElementById('fullAddress').value.trim();
+
+            if (link.length > 10 && country && address) {
                 document.getElementById('quote').style.display = 'block';
+            } else {
+                alert("Please paste a valid Amazon link, select a country, and enter full address.");
             }
-        });
+        }
     </script>
 
     <!-- NOWPayments Checkout -->
