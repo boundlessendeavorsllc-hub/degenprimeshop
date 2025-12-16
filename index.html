@@ -25,7 +25,7 @@
             overflow-x: hidden;
             position: relative;
         }
-        /* Ticker Bar - Continuous */
+        /* Ticker Bar */
         .ticker-bar {
             position: fixed;
             top: 0;
@@ -407,7 +407,7 @@
         </div>
 
         <!-- Get Quote Button -->
-        <button class="get-quote-button" onclick="getQuote()">GET QUOTE</button>
+        <button class="get-quote-button" onclick="showQuote()">GET QUOTE</button>
 
         <!-- Quote Output -->
         <div class="quote-output" id="quote">
@@ -415,10 +415,16 @@
             <p>Local US Shipping: FREE (Amazon Prime)</p>
             <p>Local Sales Tax (NJ): $86.04</p>
             <p>International Shipping (choose option):</p>
-            <div class="shipping-options" id="shippingOptions"></div>
+            <div class="shipping-options" id="shippingOptions">
+                <select id="shippingOption" onchange="updateTotal()">
+                    <option value="88">DHL Express - $88.00</option>
+                    <option value="77">UPS Expedited - $77.00</option>
+                    <option value="99">FedEx Priority - $99.00</option>
+                </select>
+            </div>
             <p>Insurance: $14.30</p>
             <p>Service Fee: $100.00</p>
-            <p class="total" id="total">Total: 1,587.34 USD</p>
+            <p class="total" id="total">Total: $1,587.34 USD</p>
             <button class="cta-button" onclick="createNOWPayment()">APE INTO PAYMENT</button>
         </div>
 
@@ -473,47 +479,13 @@
             }
         });
 
-        async function getQuote() {
+        function showQuote() {
             const link = document.getElementById('amazonLink').value.trim();
             const country = document.getElementById('country').value;
 
             if (link.length > 10 && country) {
-                try {
-                    const response = await fetch('/api/shippo', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ country })
-                    });
-
-                    const rates = await response.json();
-
-                    if (rates.error || !rates.length) {
-                        throw new Error("No rates");
-                    }
-
-                    const optionsDiv = document.getElementById('shippingOptions');
-                    optionsDiv.innerHTML = '<select id="shippingOption" onchange="updateTotal()">';
-                    rates.forEach((rate, index) => {
-                        const price = (parseFloat(rate.amount) * 1.10).toFixed(2);
-                        optionsDiv.innerHTML += `<option value="${price}" ${index === 0 ? 'selected' : ''}>${rate.servicelevel.name} - $${price}</option>`;
-                    });
-                    optionsDiv.innerHTML += '</select>';
-
-                    updateTotal();
-                    document.getElementById('quote').style.display = 'block';
-                } catch (err) {
-                    // Fallback to mock with note
-                    document.getElementById('shippingOptions').innerHTML = `
-                        <p>Shippo test mode limited — showing approximate rates:</p>
-                        <select id="shippingOption" onchange="updateTotal()">
-                            <option value="88">DHL Express - $88.00</option>
-                            <option value="77">UPS Expedited - $77.00</option>
-                            <option value="99">FedEx Priority - $99.00</option>
-                        </select>
-                    `;
-                    updateTotal();
-                    document.getElementById('quote').style.display = 'block';
-                }
+                document.getElementById('quote').style.display = 'block';
+                updateTotal();
             } else {
                 alert("Please paste a valid Amazon link and select a country.");
             }
