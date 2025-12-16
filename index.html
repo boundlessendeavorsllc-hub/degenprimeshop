@@ -25,7 +25,7 @@
             overflow-x: hidden;
             position: relative;
         }
-        /* Ticker Bar - Continuous */
+        /* Ticker Bar */
         .ticker-bar {
             position: fixed;
             top: 0;
@@ -131,7 +131,7 @@
             color: var(--neon-accent);
             text-shadow: 0 0 10px var(--neon-purple);
         }
-        input, select, textarea {
+        input, select {
             width: 100%;
             padding: 18px;
             border-radius: 15px;
@@ -139,10 +139,6 @@
             background: rgba(0,0,0,0.5);
             color: white;
             font-size: 1.2rem;
-        }
-        textarea {
-            height: 120px;
-            resize: vertical;
         }
         .any-token-note {
             margin: 40px auto 0;
@@ -401,20 +397,8 @@
                 <option value="BR">Brazil</option>
                 <option value="MX">Mexico</option>
                 <option value="ZA">South Africa</option>
-                <option value="SA">Saudi Arabia</option>
-                <option value="SG">Singapore</option>
-                <option value="MY">Malaysia</option>
-                <option value="ID">Indonesia</option>
-                <option value="TH">Thailand</option>
-                <option value="PH">Philippines</option>
-                <option value="VN">Vietnam</option>
-                <option value="OTHER">Other (please specify in address)</option>
+                <option value="OTHER">Other</option>
             </select>
-        </div>
-
-        <div class="input-group">
-            <label>City & Full Address (street, postal code, phone)</label>
-            <textarea id="fullAddress" placeholder="e.g., Sheikh Zayed Road, Dubai, UAE - Postal 00000 - Phone +971..."></textarea>
         </div>
 
         <div class="any-token-note">
@@ -488,12 +472,11 @@
         function showQuote() {
             const link = document.getElementById('amazonLink').value.trim();
             const country = document.getElementById('country').value;
-            const address = document.getElementById('fullAddress').value.trim();
 
-            if (link.length > 10 && country && address) {
+            if (link.length > 10 && country) {
                 document.getElementById('quote').style.display = 'block';
             } else {
-                alert("Please paste a valid Amazon link, select a country, and enter full address.");
+                alert("Please paste a valid Amazon link and select a country.");
             }
         }
     </script>
