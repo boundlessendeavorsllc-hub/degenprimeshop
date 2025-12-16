@@ -4,40 +4,176 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DegenPrimeShop – Track Your Order</title>
-    <!-- Same styles as homepage -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Rajdhani:wght@600&display=swap" rel="stylesheet">
     <style>
-        /* Paste homepage styles for consistency */
+        /* Same full styles as homepage for consistency */
+        :root {
+            --bg-gradient: linear-gradient(135deg, #1a001a, #2e003e, #120026);
+            --neon-purple: #b94eff;
+            --neon-accent: #e0aaff;
+            --glass-bg: rgba(26, 0, 26, 0.6);
+            --glass-border: rgba(185, 78, 255, 0.4);
+            --text-glow: 0 0 30px rgba(185, 78, 255, 0.9);
+            --button-glow: 0 0 40px rgba(185, 78, 255, 0.8);
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Rajdhani', sans-serif;
+            background: var(--bg-gradient);
+            color: #e6ccff;
+            min-height: 100vh;
+        }
+        #particles {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        header {
+            text-align: center;
+            padding: 100px 20px 30px;
+            position: relative;
+            z-index: 2;
+        }
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 4.5rem;
+            background: linear-gradient(to right, #b94eff, #e0aaff, #9d4edd);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: var(--text-glow);
+        }
+        .mascot {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            width: 200px;
+            filter: drop-shadow(0 0 30px #b94eff);
+            border-radius: 20px;
+        }
+        .tracking-card {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 50px;
+            background: var(--glass-bg);
+            border-radius: 25px;
+            border: 2px solid var(--glass-border);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 15px 50px rgba(185, 78, 255, 0.3);
+            text-align: center;
+        }
+        input {
+            width: 80%;
+            padding: 18px;
+            border-radius: 15px;
+            border: 2px solid var(--neon-purple);
+            background: rgba(0,0,0,0.5);
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        .track-button {
+            padding: 20px 80px;
+            font-size: 1.8rem;
+            font-family: 'Orbitron';
+            background: linear-gradient(to right, #b94eff, #e0aaff);
+            color: black;
+            border: none;
+            border-radius: 60px;
+            cursor: pointer;
+            box-shadow: var(--button-glow);
+        }
+        .track-button:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 0 60px rgba(224, 170, 255, 0.9);
+        }
+        #trackingResult {
+            margin-top: 40px;
+            padding: 30px;
+            background: rgba(0,0,0,0.4);
+            border-radius: 20px;
+            border: 2px solid var(--neon-purple);
+            text-align: left;
+        }
+        #trackingResult p {
+            margin: 15px 0;
+            font-size: 1.4rem;
+        }
+        #trackingResult strong {
+            color: var(--neon-accent);
+        }
+        #trackingLink {
+            color: var(--neon-accent);
+            text-decoration: underline;
+        }
+        footer {
+            text-align: center;
+            padding: 60px;
+            opacity: 0.7;
+        }
     </style>
 </head>
 <body>
-    <!-- Ape mascot, header, etc -->
+    <canvas id="particles"></canvas>
 
-    <div class="calculator-card">
-        <h2>Track Your Order</h2>
-        <p>Enter your Order ID (from payment receipt)</p>
+    <img src="https://i.imgur.com/iCSf4WT.jpeg" alt="Degen Astronaut Ape" class="mascot">
+
+    <header>
+        <h1>Track Your Order</h1>
+        <p>Enter your Order ID from the payment receipt</p>
+    </header>
+
+    <div class="tracking-card">
         <input type="text" id="orderId" placeholder="e.g., degen-1734301234567">
-        <button class="get-quote-button" onclick="trackOrder()">TRACK</button>
+        <button class="track-button" onclick="trackOrder()">TRACK</button>
 
-        <div id="trackingResult" style="display:none; margin-top:40px;">
+        <div id="trackingResult" style="display:none;">
+            <p><strong>Order ID:</strong> <span id="orderIdDisplay"></span></p>
+            <p><strong>Amazon Item:</strong> <a id="amazonLink" target="_blank">View on Amazon</a></p>
+            <p><strong>Total Paid:</strong> $<span id="totalPaid"></span></p>
+            <p><strong>Shipping To:</strong> <span id="country"></span></p>
             <p><strong>Status:</strong> <span id="status"></span></p>
-            <p><strong>Tracking #:</strong> <span id="tracking"></span></p>
+            <p><strong>Tracking #:</strong> <span id="tracking"></span> <a id="trackingLink" target="_blank" style="display:none;">(View on carrier site)</a></p>
             <p><strong>Notes:</strong> <span id="notes"></span></p>
         </div>
 
-        <p style="margin-top:40px;">No order? Check spam or contact the Ape.</p>
+        <p style="margin-top:40px; opacity:0.8;">Lost your Order ID? Check your wallet transaction or contact the Ape.</p>
     </div>
 
+    <footer>
+        © 2025 DegenPrimeShop.com — For Degens, By Degens | Purple Mode Activated 💜
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <script>
-        // Fetch from same localStorage (or future backend)
+        particlesJS("particles", { /* same as homepage */ });
+
         function trackOrder() {
             const id = document.getElementById('orderId').value.trim();
+            if (!id) {
+                alert("Enter your Order ID");
+                return;
+            }
+
             const orders = JSON.parse(localStorage.getItem('degenOrders')) || [];
             const order = orders.find(o => o.orderId === id);
 
             if (order) {
+                document.getElementById('orderIdDisplay').innerText = order.orderId;
+                document.getElementById('amazonLink').href = order.amazonLink || '#';
+                document.getElementById('amazonLink').innerText = order.amazonLink ? 'View on Amazon' : 'N/A';
+                document.getElementById('totalPaid').innerText = order.totalPaid || 'N/A';
+                document.getElementById('country').innerText = order.country || 'N/A';
                 document.getElementById('status').innerText = order.status || "Processing";
-                document.getElementById('tracking').innerText = order.tracking || "Not yet available";
-                document.getElementById('notes').innerText = order.notes || "On the way, degen!";
+                document.getElementById('tracking').innerText = order.tracking || "Not available yet";
+                if (order.tracking) {
+                    document.getElementById('trackingLink').style.display = 'inline';
+                    document.getElementById('trackingLink').href = `https://www.google.com/search?q=${order.tracking}+tracking`;
+                } else {
+                    document.getElementById('trackingLink').style.display = 'none';
+                }
+                document.getElementById('notes').innerText = order.notes || "On the way, degen! 🚀";
                 document.getElementById('trackingResult').style.display = 'block';
             } else {
                 alert("Order not found — check ID or contact support.");
