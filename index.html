@@ -25,7 +25,7 @@
             overflow-x: hidden;
             position: relative;
         }
-        /* Ticker Bar */
+        /* Ticker Bar - Continuous */
         .ticker-bar {
             position: fixed;
             top: 0;
@@ -235,22 +235,34 @@
             z-index: 2;
             position: relative;
         }
-        /* Social Links */
+        /* Social Links - Modern X + Telegram */
         .social-links {
             position: fixed;
-            top: 50px;
+            top: 60px;
             right: 30px;
             z-index: 11;
         }
         .social-icon {
             width: 45px;
             height: 45px;
-            margin-left: 15px;
+            margin-left: 20px;
             filter: drop-shadow(0 0 15px #b94eff);
             transition: transform 0.3s;
         }
         .social-icon:hover {
             transform: scale(1.2);
+            filter: drop-shadow(0 0 30px #b94eff);
+        }
+        @media (max-width: 768px) {
+            .social-links {
+                top: 50px;
+                right: 15px;
+            }
+            .social-icon {
+                width: 40px;
+                height: 40px;
+                margin-left: 15px;
+            }
         }
         /* Ape Chat Bubble */
         .chat-bubble {
