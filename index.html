@@ -103,7 +103,7 @@
             color: var(--neon-accent);
             text-shadow: 0 0 10px var(--neon-purple);
         }
-        input, textarea {
+        input, select {
             width: 100%;
             padding: 18px;
             border-radius: 15px;
@@ -112,9 +112,37 @@
             color: white;
             font-size: 1.2rem;
         }
-        textarea {
-            height: 120px;
-            resize: vertical;
+        .quote-output {
+            margin-top: 50px;
+            padding: 40px;
+            background: rgba(0,0,0,0.4);
+            border-radius: 20px;
+            border: 2px solid var(--neon-purple);
+            text-align: center;
+            display: none;
+        }
+        .total {
+            font-size: 3rem;
+            font-family: 'Orbitron';
+            color: var(--neon-accent);
+            text-shadow: var(--text-glow);
+        }
+        .cta-button {
+            display: block;
+            margin: 50px auto 0;
+            padding: 20px 80px;
+            font-size: 1.8rem;
+            font-family: 'Orbitron';
+            background: linear-gradient(to right, #b94eff, #e0aaff);
+            color: black;
+            border: none;
+            border-radius: 60px;
+            cursor: pointer;
+            box-shadow: var(--button-glow);
+        }
+        .cta-button:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 0 60px rgba(224, 170, 255, 0.9);
         }
         .any-token-note {
             margin: 40px auto 0;
@@ -125,24 +153,6 @@
             border: 2px dashed var(--neon-purple);
             text-align: center;
             font-size: 1.4rem;
-        }
-        .cta-button {
-            display: block;
-            margin: 60px auto 0;
-            padding: 25px 100px;
-            font-size: 2rem;
-            font-family: 'Orbitron';
-            background: linear-gradient(to right, #b94eff, #e0aaff);
-            color: black;
-            border: none;
-            border-radius: 60px;
-            cursor: pointer;
-            box-shadow: var(--button-glow);
-            text-transform: uppercase;
-        }
-        .cta-button:hover {
-            transform: translateY(-8px) scale(1.05);
-            box-shadow: 0 0 60px rgba(224, 170, 255, 0.9);
         }
         .hold-disclaimer {
             margin: 40px auto 0;
@@ -197,26 +207,6 @@
             z-index: 2;
             position: relative;
         }
-        /* Floating AI Chat Bubble */
-.chat-bubble {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 70px;
-    height: 70px;
-    background: url('https://i.imgur.com/iCSf4WT.jpeg') center/cover;
-    background-size: cover;
-    border-radius: 50%;
-    box-shadow: 0 0 40px #b94eff;
-    cursor: pointer;
-    z-index: 10;
-    border: 3px solid #e0aaff;
-}
-
-.chat-bubble:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 60px #b94eff;
-}
     </style>
 </head>
 <body>
@@ -237,8 +227,8 @@
         </div>
 
         <div class="input-group">
-            <label>City & Country (for shipping estimate)</label>
-            <input type="text" id="cityCountry" placeholder="e.g., Dubai, UAE">
+            <label>Your Shipping Destination</label>
+            <input type="text" id="destination" placeholder="Start typing your address (e.g., Dubai, UAE)">
         </div>
 
         <div class="any-token-note">
@@ -246,14 +236,14 @@
             BTC • ETH • USDC • DOGE • SHIB • SOL • APE • memes & more
         </div>
 
-        <!-- Full Address (appears after quote) -->
-        <div class="input-group" id="fullAddressGroup" style="display: none;">
-            <label>Full Shipping Address (required for delivery)</label>
-            <textarea id="fullAddress" placeholder="Street, apartment, postal code, phone number..."></textarea>
+        <div class="quote-output" id="quote">
+            <p>Item: MacBook Air M3 (Degen Flex Approved)</p>
+            <p>Amazon Price: $1,299.00</p>
+            <p>Service Fee: +$80.00 (We Eat Too)</p>
+            <p>Shipping (DHL Express): +$65.00</p>
+            <p class="total">Total: 1,444.00 USD</p>
+            <button class="cta-button" onclick="createNOWPayment()">APE INTO PAYMENT</button>
         </div>
-
-        <!-- Big APE INTO PAYMENT button -->
-        <button class="cta-button" onclick="createNOWPayment()">APE INTO PAYMENT</button>
 
         <div class="hold-disclaimer">
             <strong>Processing Hold Policy:</strong> Crypto payment confirmed? We manually secure your Prime item on Amazon. 
@@ -288,11 +278,6 @@
         © 2025 DegenPrimeShop.com — For Degens, By Degens | Purple Mode Activated 💜
     </footer>
 
-    <!-- Floating AI Chat Bubble (mock) -->
-    <div class="chat-bubble" title="Ask the Ape">
-        🤖
-    </div>
-
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <script>
         particlesJS("particles", {
@@ -310,19 +295,19 @@
             }
         });
 
-        // Show full address after quote
         document.getElementById('amazonLink').addEventListener('input', function() {
             if (this.value.length > 10) {
                 document.getElementById('quote').style.display = 'block';
-                document.getElementById('fullAddressGroup').style.display = 'block';
             }
         });
     </script>
 
-    <!-- NOWPayments Checkout -->
+    <!-- NOWPayments Checkout (dynamic total) -->
     <script>
         function createNOWPayment() {
-            const amount = 1444.00; // Test total — dynamic later
+            const totalText = document.querySelector('.total').innerText;
+            const amount = parseFloat(totalText.replace('Total: ', '').replace(' USD', '')) || 1.00;
+
             const currency = "usd";
             const orderId = "degen-" + Date.now();
             const description = "DegenPrimeShop order";
