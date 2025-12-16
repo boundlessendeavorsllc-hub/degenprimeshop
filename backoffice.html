@@ -146,4 +146,40 @@
             }
 
             document.getElementById('totalRevenue').innerText = `$${totalRevenue.toFixed(2)}`;
-            document.getElementById('totalProfit').innerText = `$${totalProfit.toFixed(2
+            document.getElementById('totalProfit').innerText = `$${totalProfit.toFixed(2)}`;
+        }
+
+        function updateCarrier(orderId, carrier) {
+            const order = orders.find(o => o.orderId === orderId);
+            if (order) order.carrier = carrier;
+            localStorage.setItem('degenOrders', JSON.stringify(orders));
+        }
+
+        // Keep other update functions (status, tracking, notes)
+
+        document.getElementById('addOrderForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const newOrder = {
+                date: document.getElementById('newDate').value,
+                orderId: document.getElementById('newOrderId').value,
+                amazonLink: document.getElementById('newAmazonLink').value,
+                amazonPrice: document.getElementById('newAmazonPrice').value,
+                serviceFee: document.getElementById('newServiceFee').value,
+                shipping: document.getElementById('newShipping').value,
+                totalPaid: document.getElementById('newTotalPaid').value,
+                address: document.getElementById('newAddress').value,
+                carrier: document.getElementById('newCarrier').value,
+                status: "Payment Received",
+                tracking: document.getElementById('newTracking').value,
+                notes: document.getElementById('newNotes').value
+            };
+            orders.push(newOrder);
+            localStorage.setItem('degenOrders', JSON.stringify(orders));
+            renderOrders();
+            this.reset();
+        });
+
+        renderOrders();
+    </script>
+</body>
+</html>
