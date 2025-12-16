@@ -103,7 +103,7 @@
             color: var(--neon-accent);
             text-shadow: 0 0 10px var(--neon-purple);
         }
-        input {
+        input, textarea {
             width: 100%;
             padding: 18px;
             border-radius: 15px;
@@ -111,6 +111,10 @@
             background: rgba(0,0,0,0.5);
             color: white;
             font-size: 1.2rem;
+        }
+        textarea {
+            height: 120px;
+            resize: vertical;
         }
         .any-token-note {
             margin: 40px auto 0;
@@ -193,6 +197,26 @@
             z-index: 2;
             position: relative;
         }
+        /* Floating AI Chat Bubble */
+        .chat-bubble {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(to right, #b94eff, #e0aaff);
+            border-radius: 50%;
+            box-shadow: var(--button-glow);
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+        .chat-bubble:hover {
+            transform: scale(1.1);
+        }
     </style>
 </head>
 <body>
@@ -213,8 +237,8 @@
         </div>
 
         <div class="input-group">
-            <label>Your Shipping Destination</label>
-            <input type="text" id="destination" placeholder="Start typing your address (e.g., Dubai, UAE)">
+            <label>City & Country (for shipping estimate)</label>
+            <input type="text" id="cityCountry" placeholder="e.g., Dubai, UAE">
         </div>
 
         <div class="any-token-note">
@@ -222,7 +246,13 @@
             BTC • ETH • USDC • DOGE • SHIB • SOL • APE • memes & more
         </div>
 
-        <!-- Big APE INTO PAYMENT button — always visible -->
+        <!-- Full Address (appears after quote) -->
+        <div class="input-group" id="fullAddressGroup" style="display: none;">
+            <label>Full Shipping Address (required for delivery)</label>
+            <textarea id="fullAddress" placeholder="Street, apartment, postal code, phone number..."></textarea>
+        </div>
+
+        <!-- Big APE INTO PAYMENT button -->
         <button class="cta-button" onclick="createNOWPayment()">APE INTO PAYMENT</button>
 
         <div class="hold-disclaimer">
@@ -258,6 +288,11 @@
         © 2025 DegenPrimeShop.com — For Degens, By Degens | Purple Mode Activated 💜
     </footer>
 
+    <!-- Floating AI Chat Bubble (mock) -->
+    <div class="chat-bubble" title="Ask the Ape">
+        🤖
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <script>
         particlesJS("particles", {
@@ -274,15 +309,23 @@
                 "events": { "onhover": { "enable": true, "mode": "repulse" }, "onclick": { "enable": true, "mode": "push" } }
             }
         });
+
+        // Show full address after quote
+        document.getElementById('amazonLink').addEventListener('input', function() {
+            if (this.value.length > 10) {
+                document.getElementById('quote').style.display = 'block';
+                document.getElementById('fullAddressGroup').style.display = 'block';
+            }
+        });
     </script>
 
     <!-- NOWPayments Checkout -->
     <script>
         function createNOWPayment() {
-            const amount = 1.00; // Test $1 — change to dynamic later
+            const amount = 1444.00; // Test total — dynamic later
             const currency = "usd";
             const orderId = "degen-" + Date.now();
-            const description = "DegenPrimeShop test order";
+            const description = "DegenPrimeShop order";
 
             const payload = {
                 price_amount: amount,
