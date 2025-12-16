@@ -103,7 +103,7 @@
             color: var(--neon-accent);
             text-shadow: 0 0 10px var(--neon-purple);
         }
-        input, select {
+        input {
             width: 100%;
             padding: 18px;
             border-radius: 15px;
@@ -112,20 +112,15 @@
             color: white;
             font-size: 1.2rem;
         }
-        .quote-output {
-            margin-top: 50px;
-            padding: 40px;
-            background: rgba(0,0,0,0.4);
-            border-radius: 20px;
-            border: 2px solid var(--neon-purple);
+        .any-token-note {
+            margin: 40px auto 0;
+            padding: 20px;
+            max-width: 800px;
+            background: rgba(0,0,0,0.3);
+            border-radius: 15px;
+            border: 2px dashed var(--neon-purple);
             text-align: center;
-            display: none;
-        }
-        .total {
-            font-size: 3rem;
-            font-family: 'Orbitron';
-            color: var(--neon-accent);
-            text-shadow: var(--text-glow);
+            font-size: 1.4rem;
         }
         .cta-button {
             display: block;
@@ -143,16 +138,6 @@
         .cta-button:hover {
             transform: translateY(-8px) scale(1.05);
             box-shadow: 0 0 60px rgba(224, 170, 255, 0.9);
-        }
-        .any-token-note {
-            margin: 40px auto 0;
-            padding: 20px;
-            max-width: 800px;
-            background: rgba(0,0,0,0.3);
-            border-radius: 15px;
-            border: 2px dashed var(--neon-purple);
-            text-align: center;
-            font-size: 1.4rem;
         }
         .hold-disclaimer {
             margin: 40px auto 0;
@@ -207,12 +192,31 @@
             z-index: 2;
             position: relative;
         }
+        /* Ape Chat Bubble Bottom Right */
+        .chat-bubble {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 70px;
+            height: 70px;
+            background: url('https://i.imgur.com/iCSf4WT.jpeg') center/cover;
+            background-size: cover;
+            border-radius: 50%;
+            box-shadow: 0 0 40px #b94eff;
+            cursor: pointer;
+            z-index: 10;
+            border: 3px solid #e0aaff;
+        }
+        .chat-bubble:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 60px #b94eff;
+        }
     </style>
 </head>
 <body>
     <canvas id="particles"></canvas>
 
-    <!-- Your Degen Astronaut Ape -->
+    <!-- Your Degen Astronaut Ape (floating mascot) -->
     <img src="https://i.imgur.com/iCSf4WT.jpeg" alt="Degen Astronaut Ape" class="mascot">
 
     <header>
@@ -239,9 +243,9 @@
         <div class="quote-output" id="quote">
             <p>Item: MacBook Air M3 (Degen Flex Approved)</p>
             <p>Amazon Price: $1,299.00</p>
-            <p>Service Fee: +$80.00 (We Eat Too)</p>
-            <p>Shipping (DHL Express): +$65.00</p>
-            <p class="total">Total: 1,444.00 USD</p>
+            <p>Service Fee (10%): +$129.90</p>
+            <p>Shipping (DHL Express): +$80.00</p>
+            <p class="total">Total: 1,508.90 USD</p>
             <button class="cta-button" onclick="createNOWPayment()">APE INTO PAYMENT</button>
         </div>
 
@@ -278,6 +282,9 @@
         © 2025 DegenPrimeShop.com — For Degens, By Degens | Purple Mode Activated 💜
     </footer>
 
+    <!-- Ape Chat Bubble (bottom right) -->
+    <div class="chat-bubble" title="Ask the Ape"></div>
+
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <script>
         particlesJS("particles", {
@@ -302,7 +309,7 @@
         });
     </script>
 
-    <!-- NOWPayments Checkout (dynamic total) -->
+    <!-- NOWPayments Checkout -->
     <script>
         function createNOWPayment() {
             const totalText = document.querySelector('.total').innerText;
