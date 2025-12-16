@@ -61,6 +61,7 @@
             padding: 15px;
             text-align: left;
             border-bottom: 1px solid var(--glass-border);
+            vertical-align: top;
         }
         th {
             font-size: 1.3rem;
@@ -72,6 +73,12 @@
             color: white;
             padding: 8px;
             border-radius: 10px;
+            width: 100%;
+            box-sizing: border-box; /* Fixes overflow */
+        }
+        textarea {
+            height: 80px;
+            resize: vertical;
         }
         .profit-summary {
             margin-top: 40px;
