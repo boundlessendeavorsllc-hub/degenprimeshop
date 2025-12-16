@@ -14,7 +14,7 @@
 ## Current Features (Live)
 - Purple cosmic design, particles background.
 - Ape mascot (floating top left, laser eyes).
-- Ape chat bubble (bottom right).
+- Ape chat bubble (bottom right, placeholder).
 - Ticker bar (top, market scroll).
 - Social icons (Telegram + X) with "Coming Soon" text.
 - Track Orders button (top right, links to public track.html in new tab).
@@ -34,7 +34,7 @@
 - Public tracking page (track.html — Order ID search, shows status/tracking/notes).
 - Backoffice dashboard (backoffice.html — password protected, manual order tracking with carrier dropdown, profit summary).
 - Secret backoffice link ("Purple Mode Activated 💜" in footer, opens new tab).
-- Terms & Conditions page (terms.html — linked in footer).
+- Terms & Conditions page (terms.html — linked in footer, opens new tab).
 - "How It Works", footer.
 
 ## Pricing (Locked)
@@ -67,14 +67,29 @@
 ## Legal Pages (Live)
 - terms.html (Terms & Conditions — no returns, crypto risks, operated by SHIP-IT Worldwide LLC).
 
-## Planned
-- Backoffice webhook automation (auto-add orders from NOWPayments).
-- Real Shippo live rates.
-- Real Amazon scraping (price/title).
-- Full address collection after payment.
-- Privacy Policy page.
-- Domain point (degenprimeshop.com).
-- Marketing launch (Telegram/X channels).
+## To-Do List (Prioritized)
+
+### High Priority (Do Next)
+- [ ] Soft launch marketing (first X/Telegram post).
+- [ ] Webhook for NOWPayments → auto-add orders to backoffice.
+- [ ] Collect full address after payment (success page or email).
+
+### Medium Priority
+- [ ] Real Shippo live rates.
+- [ ] Real Amazon scraping (price/title).
+- [ ] Privacy Policy page.
+
+### Low Priority (Polish)
+- [ ] Full Ape chat bot (Telegram or on-site support).
+- [ ] Social channels full launch (Telegram/X active, ape chat integration).
+
+### Done ✓
+- [x] Homepage live with quote calculator.
+- [x] Backoffice dashboard (manual tracking).
+- [x] Public tracking page (track.html).
+- [x] Whole-dollar rounding.
+- [x] Secret backoffice link ("Purple Mode Activated").
+- [x] Terms & Conditions page.
 
 ## Changelog
 - Dec 16, 2025: Homepage polished — ticker bar, social icons (Telegram + X with "Coming Soon"), track orders button, ape chat bubble added.
@@ -86,6 +101,6 @@
 - Dec 16, 2025: Backoffice dashboard added (password protected, manual order tracking with carrier dropdown, profit summary).
 - Dec 16, 2025: Public tracking page added (track.html — Order ID search, shows status/tracking/notes).
 - Dec 16, 2025: Secret backoffice link added ("Purple Mode Activated 💜" in footer, opens new tab).
-- Dec 16, 2025: Terms & Conditions page added (terms.html — linked in footer).
+- Dec 16, 2025: Terms & Conditions page added (terms.html — linked in footer, opens new tab).
 
 For Degens, By Degens | Purple Mode Activated 💜
