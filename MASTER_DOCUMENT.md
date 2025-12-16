@@ -7,7 +7,8 @@
 
 ## Core Concept
 - Degens paste Amazon Prime link.
-- Get quote (item + 10% fee + shipping).
+- Fill shipping country (dropdown) + city/full address.
+- Click "Get Quote" → see total (item + 10% fee + shipping).
 - Pay with any crypto (NOWPayments).
 - We buy & ship worldwide.
 
@@ -17,9 +18,10 @@
 - Ape chat bubble (bottom right).
 - Ticker bar (top, market scroll).
 - Social icons (Telegram + X) with "Coming Soon" text.
-- Track Orders button (placeholder).
-- Calculator: Prime link + shipping country dropdown + city/full address.
+- Track Orders button (top right, placeholder).
+- Calculator: Prime link + country dropdown + city/full address.
 - "Pay with ANY crypto" note.
+- "Get Quote" button (shows quote instantly).
 - "APE INTO PAYMENT" button (real NOWPayments, new tab).
 - Mock quote with dynamic total.
 - Hold policy, "How It Works", footer.
@@ -45,6 +47,6 @@
 - Dec 16, 2025: Homepage polished — ticker bar, social icons (Telegram + X with "Coming Soon"), track orders button, ape chat bubble added.
 - Dec 16, 2025: Social icons fixed (correct modern X logo, no overlap, "Coming Soon" spacing improved).
 - Dec 16, 2025: Destination field replaced with country dropdown + city/full address textarea for better accuracy.
-- [Future entries here]
+- Dec 16, 2025: Added "Get Quote" button for clearer UX (quote shows on click, not tab).
 
 For Degens, By Degens | Purple Mode Activated 💜
