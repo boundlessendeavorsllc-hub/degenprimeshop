@@ -25,7 +25,7 @@
             overflow-x: hidden;
             position: relative;
         }
-        /* Ticker Bar */
+        /* Ticker Bar - Extended for no blank */
         .ticker-bar {
             position: fixed;
             top: 0;
@@ -40,7 +40,7 @@
         .ticker-wrapper {
             display: flex;
             width: 200%;
-            animation: scroll-left 80s linear infinite;
+            animation: scroll-left 100s linear infinite; /* Slower for more content */
         }
         .ticker-content {
             display: flex;
@@ -235,7 +235,7 @@
             z-index: 2;
             position: relative;
         }
-        /* Social Links - Fixed Icons */
+        /* Social Links */
         .social-links {
             position: fixed;
             top: 60px;
@@ -287,19 +287,19 @@
 <body>
     <canvas id="particles"></canvas>
 
-    <!-- Ticker Bar -->
+    <!-- Ticker Bar - Extended with more crypto -->
     <div class="ticker-bar">
         <div class="ticker-wrapper">
             <div class="ticker-content">
-                BTC $86,000 (-3%) • ETH $2,937 (-2%) • SOL $132 (+2%) • DJI 48,403 (-0.1%) • NASDAQ 23,194 (-1.7%) • "Spend your gains on Prime gadgets — no fiat required" &nbsp;&nbsp;&nbsp;&nbsp;
+                BTC $86,000 (-3%) • ETH $2,937 (-2%) • SOL $132 (+2%) • DOGE $0.18 (+5%) • SHIB $0.000018 (+3%) • ADA $0.45 (-1%) • XRP $0.62 (+4%) • AVAX $38 (+6%) • TON $5.20 (-2%) • DJI 48,403 (-0.1%) • NASDAQ 23,194 (-1.7%) • "Spend your gains on Prime gadgets — no fiat required" • "Ape in now — worldwide shipping" &nbsp;&nbsp;&nbsp;&nbsp;
             </div>
             <div class="ticker-content">
-                BTC $86,000 (-3%) • ETH $2,937 (-2%) • SOL $132 (+2%) • DJI 48,403 (-0.1%) • NASDAQ 23,194 (-1.7%) • "Spend your gains on Prime gadgets — no fiat required" &nbsp;&nbsp;&nbsp;&nbsp;
+                BTC $86,000 (-3%) • ETH $2,937 (-2%) • SOL $132 (+2%) • DOGE $0.18 (+5%) • SHIB $0.000018 (+3%) • ADA $0.45 (-1%) • XRP $0.62 (+4%) • AVAX $38 (+6%) • TON $5.20 (-2%) • DJI 48,403 (-0.1%) • NASDAQ 23,194 (-1.7%) • "Spend your gains on Prime gadgets — no fiat required" • "Ape in now — worldwide shipping" &nbsp;&nbsp;&nbsp;&nbsp;
             </div>
         </div>
     </div>
 
-    <!-- Social Links - Fixed Icons -->
+    <!-- Social Links -->
     <div class="social-links">
         <a href="https://t.me/degenprimeshop" target="_blank" rel="noopener">
             <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram" class="social-icon">
