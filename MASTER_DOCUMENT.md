@@ -1,6 +1,6 @@
 # DegenPrimeShop.com – Master Document
 
-**Date Started:** December 2025  
+**Last Updated:** December 16, 2025  
 **Status:** Live & Payment-Ready  
 **URL:** https://degenprimeshop.vercel.app/  
 **Goal:** Crypto-only Amazon Prime gadget forwarding — worldwide shipping, no fiat.
@@ -16,18 +16,18 @@
 - Ape mascot (floating top left, laser eyes).
 - Ape chat bubble (bottom right).
 - Ticker bar (top, market scroll).
-- Social icons + "Coming Soon".
+- Social icons (Telegram + X) with "Coming Soon" text.
 - Track Orders button (placeholder).
-- Calculator: Prime link + destination.
+- Calculator: Prime link + shipping country dropdown + city/full address.
 - "Pay with ANY crypto" note.
 - "APE INTO PAYMENT" button (real NOWPayments, new tab).
 - Mock quote with dynamic total.
 - Hold policy, "How It Works", footer.
 
 ## Pricing (Locked)
-- Service Fee: 10% (min $40, max $100).
+- Service Fee: 10% of item price (min $40, max $100).
 - Shipping: Real Shippo rates + markup (planned).
-- Insurance: Automatic full value (hidden).
+- Insurance: Automatic full value (hidden in shipping).
 
 ## Payments
 - NOWPayments (300+ coins, custody mode).
@@ -44,6 +44,7 @@
 ## Changelog
 - Dec 16, 2025: Homepage polished — ticker bar, social icons (Telegram + X with "Coming Soon"), track orders button, ape chat bubble added.
 - Dec 16, 2025: Social icons fixed (correct modern X logo, no overlap, "Coming Soon" spacing improved).
+- Dec 16, 2025: Destination field replaced with country dropdown + city/full address textarea for better accuracy.
 - [Future entries here]
 
 For Degens, By Degens | Purple Mode Activated 💜
