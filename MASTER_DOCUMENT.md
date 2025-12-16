@@ -73,9 +73,9 @@
 - [ ] Soft launch marketing (first X/Telegram post).
 - [ ] Webhook for NOWPayments → auto-add orders to backoffice.
 - [ ] Collect full address after payment (success page or email).
+- [ ] Switch to live Shippo API key (real international rates).
 
 ### Medium Priority
-- [ ] Real Shippo live rates.
 - [ ] Real Amazon scraping (price/title).
 - [ ] Privacy Policy page.
 
@@ -102,5 +102,6 @@
 - Dec 16, 2025: Public tracking page added (track.html — Order ID search, shows status/tracking/notes).
 - Dec 16, 2025: Secret backoffice link added ("Purple Mode Activated 💜" in footer, opens new tab).
 - Dec 16, 2025: Terms & Conditions page added (terms.html — linked in footer, opens new tab).
+- Dec 16, 2025: Added live Shippo API key to high-priority to-do.
 
 For Degens, By Degens | Purple Mode Activated 💜
