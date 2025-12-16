@@ -103,7 +103,7 @@
             color: var(--neon-accent);
             text-shadow: 0 0 10px var(--neon-purple);
         }
-        input, select {
+        input {
             width: 100%;
             padding: 18px;
             border-radius: 15px;
@@ -111,38 +111,6 @@
             background: rgba(0,0,0,0.5);
             color: white;
             font-size: 1.2rem;
-        }
-        .quote-output {
-            margin-top: 50px;
-            padding: 40px;
-            background: rgba(0,0,0,0.4);
-            border-radius: 20px;
-            border: 2px solid var(--neon-purple);
-            text-align: center;
-            display: none;
-        }
-        .total {
-            font-size: 3rem;
-            font-family: 'Orbitron';
-            color: var(--neon-accent);
-            text-shadow: var(--text-glow);
-        }
-        .cta-button {
-            display: block;
-            margin: 50px auto 0;
-            padding: 20px 80px;
-            font-size: 1.8rem;
-            font-family: 'Orbitron';
-            background: linear-gradient(to right, #b94eff, #e0aaff);
-            color: black;
-            border: none;
-            border-radius: 60px;
-            cursor: pointer;
-            box-shadow: var(--button-glow);
-        }
-        .cta-button:hover {
-            transform: translateY(-8px) scale(1.05);
-            box-shadow: 0 0 60px rgba(224, 170, 255, 0.9);
         }
         .any-token-note {
             margin: 40px auto 0;
@@ -153,6 +121,24 @@
             border: 2px dashed var(--neon-purple);
             text-align: center;
             font-size: 1.4rem;
+        }
+        .cta-button {
+            display: block;
+            margin: 60px auto 0;
+            padding: 25px 100px;
+            font-size: 2rem;
+            font-family: 'Orbitron';
+            background: linear-gradient(to right, #b94eff, #e0aaff);
+            color: black;
+            border: none;
+            border-radius: 60px;
+            cursor: pointer;
+            box-shadow: var(--button-glow);
+            text-transform: uppercase;
+        }
+        .cta-button:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 0 60px rgba(224, 170, 255, 0.9);
         }
         .hold-disclaimer {
             margin: 40px auto 0;
@@ -236,14 +222,8 @@
             BTC • ETH • USDC • DOGE • SHIB • SOL • APE • memes & more
         </div>
 
-        <div class="quote-output" id="quote">
-            <p>Item: MacBook Air M3 (Degen Flex Approved)</p>
-            <p>Amazon Price: $1,299.00</p>
-            <p>Service Fee: +$80.00 (We Eat Too)</p>
-            <p>Shipping (DHL Express): +$65.00</p>
-            <p class="total">Total: 1,444.00 USD</p>
-            <button class="cta-button" onclick="createNOWPayment()">APE INTO PAYMENT</button>
-        </div>
+        <!-- Big APE INTO PAYMENT button — always visible -->
+        <button class="cta-button" onclick="createNOWPayment()">APE INTO PAYMENT</button>
 
         <div class="hold-disclaimer">
             <strong>Processing Hold Policy:</strong> Crypto payment confirmed? We manually secure your Prime item on Amazon. 
@@ -294,23 +274,15 @@
                 "events": { "onhover": { "enable": true, "mode": "repulse" }, "onclick": { "enable": true, "mode": "push" } }
             }
         });
-
-        document.getElementById('amazonLink').addEventListener('input', function() {
-            if (this.value.length > 10) {
-                document.getElementById('quote').style.display = 'block';
-            }
-        });
     </script>
 
-    <!-- NOWPayments Checkout (dynamic total) -->
+    <!-- NOWPayments Checkout (test total for now) -->
     <script>
         function createNOWPayment() {
-            const totalText = document.querySelector('.total').innerText;
-            const amount = parseFloat(totalText.replace('Total: ', '').replace(' USD', '')) || 1.00;
-
+            const amount = 1.00; // Test $1 — change to dynamic later
             const currency = "usd";
             const orderId = "degen-" + Date.now();
-            const description = "DegenPrimeShop order";
+            const description = "DegenPrimeShop test order";
 
             const payload = {
                 price_amount: amount,
