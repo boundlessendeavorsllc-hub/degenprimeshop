@@ -394,9 +394,6 @@
                 <option value="DE">Germany</option>
                 <option value="FR">France</option>
                 <option value="JP">Japan</option>
-                <option value="BR">Brazil</option>
-                <option value="MX">Mexico</option>
-                <option value="ZA">South Africa</option>
                 <option value="OTHER">Other</option>
             </select>
         </div>
@@ -411,18 +408,26 @@
 
         <!-- Quote Output -->
         <div class="quote-output" id="quote">
-            <p>Item: MacBook Air M3 (Degen Flex Approved)</p>
             <p>Amazon Price: $1,299.00</p>
+            <p>Local US Shipping: FREE (Amazon Prime)</p>
+            <p>Local Sales Tax (NJ): $86.04</p>
+            <p>International Shipping (choose option):</p>
+            <select id="shippingOption">
+                <option value="80">DHL Express - $88.00 (10% markup)</option>
+                <option value="70">UPS Expedited - $77.00 (10% markup)</option>
+                <option value="90">FedEx Priority - $99.00 (10% markup)</option>
+            </select>
+            <p>Insurance: $14.30 (10% markup)</p>
             <p>Service Fee (10%): +$129.90</p>
-            <p>Shipping (DHL Express): +$80.00</p>
-            <p class="total">Total: 1,508.90 USD</p>
+            <p class="total">Total: 1,617.24 USD</p>
             <button class="cta-button" onclick="createNOWPayment()">APE INTO PAYMENT</button>
         </div>
 
         <div class="hold-disclaimer">
             <strong>Processing Hold Policy:</strong> Crypto payment confirmed? We manually secure your Prime item on Amazon. 
             Orders may take up to <strong>24 hours</strong> to process (verification, purchase, execution). 
-            Your gadget ships shortly after—tracking incoming. No rugs, pure degen delivery. 💜
+            Your gadget ships shortly after—tracking incoming. 
+            <strong>All sales final — no returns or refunds.</strong> No rugs, pure degen delivery. 💜
         </div>
     </div>
 
