@@ -31,9 +31,33 @@
             pointer-events: none;
             z-index: 1;
         }
+        /* Ticker Bar */
+        .ticker-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(26, 0, 26, 0.8);
+            border-bottom: 2px solid var(--neon-purple);
+            padding: 10px 0;
+            z-index: 10;
+            overflow: hidden;
+        }
+        .ticker-content {
+            display: inline-block;
+            white-space: nowrap;
+            animation: scroll-left 60s linear infinite;
+            font-size: 1.1rem;
+            color: var(--neon-accent);
+            text-shadow: var(--text-glow);
+        }
+        @keyframes scroll-left {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
         header {
             text-align: center;
-            padding: 60px 20px 30px;
+            padding: 100px 20px 30px; /* Extra for ticker */
             position: relative;
             z-index: 2;
         }
@@ -192,31 +216,57 @@
             z-index: 2;
             position: relative;
         }
-        /* Ape Chat Bubble Bottom Right */
-        .chat-bubble {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 70px;
-            height: 70px;
-            background: url('https://i.imgur.com/iCSf4WT.jpeg') center/cover;
-            background-size: cover;
-            border-radius: 50%;
-            box-shadow: 0 0 40px #b94eff;
-            cursor: pointer;
-            z-index: 10;
-            border: 3px solid #e0aaff;
+        /* Social Links Top Right */
+        .social-links {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 3;
         }
-        .chat-bubble:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 60px #b94eff;
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            margin-left: 15px;
+            filter: drop-shadow(0 0 10px #b94eff);
+            transition: transform 0.3s;
+        }
+        .social-icon:hover {
+            transform: scale(1.2);
+        }
+        @media (max-width: 768px) {
+            .social-links {
+                top: 10px;
+                right: 10px;
+            }
+            .social-icon {
+                width: 35px;
+                height: 35px;
+            }
         }
     </style>
 </head>
 <body>
     <canvas id="particles"></canvas>
 
-    <!-- Your Degen Astronaut Ape (floating mascot) -->
+    <!-- Ticker Bar -->
+    <div class="ticker-bar">
+        <div class="ticker-content">
+            BTC $86,000 (-3%) • ETH $2,937 (-2%) • SOL $132 (+2%) • DJI 48,403 (-0.1%) • NASDAQ 23,194 (-1.7%) • "Spend your gains on Prime gadgets — no fiat required" &nbsp;&nbsp;&nbsp;&nbsp;
+            BTC $86,000 (-3%) • ETH $2,937 (-2%) • SOL $132 (+2%) • DJI 48,403 (-0.1%) • NASDAQ 23,194 (-1.7%) • "Spend your gains on Prime gadgets — no fiat required"
+        </div>
+    </div>
+
+    <!-- Social Links Top Right -->
+    <div class="social-links">
+        <a href="https://t.me/degenprimeshop" target="_blank" rel="noopener">
+            <img src="https://img.icons8.com/color/48/000000/telegram-plane.png" alt="Telegram" class="social-icon">
+        </a>
+        <a href="https://x.com/degenprimeshop" target="_blank" rel="noopener">
+            <img src="https://img.icons8.com/color/48/000000/twitter.png" alt="X (Twitter)" class="social-icon">
+        </a>
+    </div>
+
+    <!-- Your Degen Astronaut Ape -->
     <img src="https://i.imgur.com/iCSf4WT.jpeg" alt="Degen Astronaut Ape" class="mascot">
 
     <header>
@@ -281,9 +331,6 @@
     <footer>
         © 2025 DegenPrimeShop.com — For Degens, By Degens | Purple Mode Activated 💜
     </footer>
-
-    <!-- Ape Chat Bubble (bottom right) -->
-    <div class="chat-bubble" title="Ask the Ape"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <script>
