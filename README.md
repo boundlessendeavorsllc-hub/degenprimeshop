@@ -1,2 +1,2 @@
-# degenprimeshop
+# DegenPrimeShop
 DegenPrimeShop.com – Pay Crypto for Prime Gadgets
