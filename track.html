@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DegenPrimeShop – Track Your Order</title>
+    <!-- Same styles as homepage -->
+    <style>
+        /* Paste homepage styles for consistency */
+    </style>
+</head>
+<body>
+    <!-- Ape mascot, header, etc -->
+
+    <div class="calculator-card">
+        <h2>Track Your Order</h2>
+        <p>Enter your Order ID (from payment receipt)</p>
+        <input type="text" id="orderId" placeholder="e.g., degen-1734301234567">
+        <button class="get-quote-button" onclick="trackOrder()">TRACK</button>
+
+        <div id="trackingResult" style="display:none; margin-top:40px;">
+            <p><strong>Status:</strong> <span id="status"></span></p>
+            <p><strong>Tracking #:</strong> <span id="tracking"></span></p>
+            <p><strong>Notes:</strong> <span id="notes"></span></p>
+        </div>
+
+        <p style="margin-top:40px;">No order? Check spam or contact the Ape.</p>
+    </div>
+
+    <script>
+        // Fetch from same localStorage (or future backend)
+        function trackOrder() {
+            const id = document.getElementById('orderId').value.trim();
+            const orders = JSON.parse(localStorage.getItem('degenOrders')) || [];
+            const order = orders.find(o => o.orderId === id);
+
+            if (order) {
+                document.getElementById('status').innerText = order.status || "Processing";
+                document.getElementById('tracking').innerText = order.tracking || "Not yet available";
+                document.getElementById('notes').innerText = order.notes || "On the way, degen!";
+                document.getElementById('trackingResult').style.display = 'block';
+            } else {
+                alert("Order not found — check ID or contact support.");
+            }
+        }
+    </script>
+</body>
+</html>
