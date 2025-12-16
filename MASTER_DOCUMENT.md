@@ -7,7 +7,7 @@
 
 ## Core Concept
 - Degens paste Amazon Prime link + select shipping country (dropdown).
-- Click "Get Quote" → see total (Amazon all-inclusive + service fee + international shipping + insurance).
+- Click "Get Quote" → see total (Amazon all-inclusive + service fee + shipping).
 - Pay with any crypto (NOWPayments).
 - We buy & ship worldwide (full address collected after payment).
 
@@ -17,7 +17,7 @@
 - Ape chat bubble (bottom right).
 - Ticker bar (top, market scroll).
 - Social icons (Telegram + X) with "Coming Soon" text.
-- Track Orders button (top right, links to backoffice).
+- Track Orders button (top right, links to public track.html).
 - Calculator: Prime link + country dropdown.
 - "Pay with ANY crypto" note.
 - "Get Quote" button (shows quote instantly).
@@ -31,6 +31,8 @@
   - Total (rounded up to next whole dollar)
 - "APE INTO PAYMENT" button (real NOWPayments, new tab).
 - Hold policy with "All sales final — no returns or refunds".
+- Public tracking page (track.html — Order ID search, shows status/tracking/notes).
+- Backoffice dashboard (backoffice.html — password protected, manual order tracking, profit summary).
 - "How It Works", footer.
 
 ## Pricing (Locked)
@@ -57,6 +59,9 @@
 - Profit summary.
 - LocalStorage persistence.
 
+## Public Tracking (Live)
+- track.html (Order ID search — shows status, tracking #, notes).
+
 ## Planned
 - Backoffice webhook automation (auto-add orders from NOWPayments).
 - Real Shippo live rates.
@@ -74,5 +79,6 @@
 - Dec 16, 2025: Quote calculator updated — local US shipping FREE, sales tax shown, markup text hidden, service fee capped at $100, "All sales final" in disclaimer.
 - Dec 16, 2025: Shippo test API integration added (real test rates, fallback approximate, rounded up whole dollars).
 - Dec 16, 2025: Backoffice dashboard added (password protected, manual order tracking, profit summary).
+- Dec 16, 2025: Public tracking page added (track.html — Order ID search, shows status/tracking/notes).
 
 For Degens, By Degens | Purple Mode Activated 💜
