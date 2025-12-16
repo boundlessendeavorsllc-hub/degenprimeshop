@@ -34,6 +34,7 @@
 - Public tracking page (track.html — Order ID search, shows status/tracking/notes).
 - Backoffice dashboard (backoffice.html — password protected, manual order tracking with carrier dropdown, profit summary).
 - Secret backoffice link ("Purple Mode Activated 💜" in footer, opens new tab).
+- Terms & Conditions page (terms.html — linked in footer).
 - "How It Works", footer.
 
 ## Pricing (Locked)
@@ -63,12 +64,15 @@
 ## Public Tracking (Live)
 - track.html (Order ID search — shows status, tracking #, notes).
 
+## Legal Pages (Live)
+- terms.html (Terms & Conditions — no returns, crypto risks, operated by SHIP-IT Worldwide LLC).
+
 ## Planned
 - Backoffice webhook automation (auto-add orders from NOWPayments).
 - Real Shippo live rates.
 - Real Amazon scraping (price/title).
 - Full address collection after payment.
-- Terms & Privacy pages.
+- Privacy Policy page.
 - Domain point (degenprimeshop.com).
 - Marketing launch (Telegram/X channels).
 
@@ -82,5 +86,6 @@
 - Dec 16, 2025: Backoffice dashboard added (password protected, manual order tracking with carrier dropdown, profit summary).
 - Dec 16, 2025: Public tracking page added (track.html — Order ID search, shows status/tracking/notes).
 - Dec 16, 2025: Secret backoffice link added ("Purple Mode Activated 💜" in footer, opens new tab).
+- Dec 16, 2025: Terms & Conditions page added (terms.html — linked in footer).
 
 For Degens, By Degens | Purple Mode Activated 💜
