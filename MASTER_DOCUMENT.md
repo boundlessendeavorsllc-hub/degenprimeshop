@@ -17,11 +17,11 @@
 - Ape chat bubble (bottom right).
 - Ticker bar (top, market scroll).
 - Social icons (Telegram + X) with "Coming Soon" text.
-- Track Orders button (top right, links to public track.html).
+- Track Orders button (top right, links to public track.html in new tab).
 - Calculator: Prime link + country dropdown.
 - "Pay with ANY crypto" note.
 - "Get Quote" button (shows quote instantly).
-- Quote calculator (clean whole-dollar numbers):
+- Quote calculator (clean whole-dollar numbers, rounded up):
   - Amazon Price (incl tax)
   - Local US Shipping: FREE (Amazon Prime)
   - Local Sales Tax (NJ): rounded
@@ -32,7 +32,8 @@
 - "APE INTO PAYMENT" button (real NOWPayments, new tab).
 - Hold policy with "All sales final — no returns or refunds".
 - Public tracking page (track.html — Order ID search, shows status/tracking/notes).
-- Backoffice dashboard (backoffice.html — password protected, manual order tracking, profit summary).
+- Backoffice dashboard (backoffice.html — password protected, manual order tracking with carrier dropdown, profit summary).
+- Secret backoffice link ("Purple Mode Activated 💜" in footer, opens new tab).
 - "How It Works", footer.
 
 ## Pricing (Locked)
@@ -55,7 +56,7 @@
 
 ## Backoffice (Live)
 - backoffice.html (password protected).
-- Manual order tracking (date, order ID, Amazon link, prices, address, status dropdown, tracking #, notes).
+- Manual order tracking (date, order ID, Amazon link, prices, address, carrier dropdown, status dropdown, tracking #, notes).
 - Profit summary.
 - LocalStorage persistence.
 
@@ -78,7 +79,8 @@
 - Dec 16, 2025: Added "Get Quote" button for clearer UX (quote shows on click).
 - Dec 16, 2025: Quote calculator updated — local US shipping FREE, sales tax shown, markup text hidden, service fee capped at $100, "All sales final" in disclaimer.
 - Dec 16, 2025: Shippo test API integration added (real test rates, fallback approximate, rounded up whole dollars).
-- Dec 16, 2025: Backoffice dashboard added (password protected, manual order tracking, profit summary).
+- Dec 16, 2025: Backoffice dashboard added (password protected, manual order tracking with carrier dropdown, profit summary).
 - Dec 16, 2025: Public tracking page added (track.html — Order ID search, shows status/tracking/notes).
+- Dec 16, 2025: Secret backoffice link added ("Purple Mode Activated 💜" in footer, opens new tab).
 
 For Degens, By Degens | Purple Mode Activated 💜
