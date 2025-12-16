@@ -6,7 +6,117 @@
     <title>DegenPrimeShop – Backoffice Dashboard</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Rajdhani:wght@600&display=swap" rel="stylesheet">
     <style>
-        /* Same styles as before */
+        :root {
+            --bg-gradient: linear-gradient(135deg, #1a001a, #2e003e, #120026);
+            --neon-purple: #b94eff;
+            --neon-accent: #e0aaff;
+            --glass-bg: rgba(26, 0, 26, 0.8);
+            --glass-border: rgba(185, 78, 255, 0.4);
+            --text-glow: 0 0 30px rgba(185, 78, 255, 0.9);
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Rajdhani', sans-serif;
+            background: var(--bg-gradient);
+            color: #e6ccff;
+            min-height: 100vh;
+        }
+        header {
+            text-align: center;
+            padding: 60px 20px 30px;
+        }
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 4rem;
+            background: linear-gradient(to right, #b94eff, #e0aaff, #9d4edd);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: var(--text-glow);
+        }
+        .mascot {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            width: 180px;
+            filter: drop-shadow(0 0 30px #b94eff);
+            border-radius: 20px;
+        }
+        .dashboard-card {
+            max-width: 1400px;
+            margin: 40px auto;
+            padding: 40px;
+            background: var(--glass-bg);
+            border-radius: 25px;
+            border: 2px solid var(--glass-border);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 15px 50px rgba(185, 78, 255, 0.3);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--glass-border);
+        }
+        th {
+            font-size: 1.3rem;
+            color: var(--neon-accent);
+        }
+        select, input, textarea {
+            background: rgba(0,0,0,0.5);
+            border: 2px solid var(--neon-purple);
+            color: white;
+            padding: 8px;
+            border-radius: 10px;
+        }
+        .profit-summary {
+            margin-top: 40px;
+            padding: 20px;
+            background: rgba(0,0,0,0.4);
+            border-radius: 20px;
+            text-align: center;
+            font-size: 1.5rem;
+        }
+        footer {
+            text-align: center;
+            padding: 60px;
+            opacity: 0.7;
+        }
+        /* Password Protection */
+        #password-screen {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+            flex-direction: column;
+        }
+        #password-input {
+            padding: 20px;
+            font-size: 1.5rem;
+            width: 300px;
+            border-radius: 15px;
+            border: 2px solid var(--neon-purple);
+            background: rgba(0,0,0,0.5);
+            color: white;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        #password-btn {
+            padding: 15px 40px;
+            font-size: 1.5rem;
+            background: var(--neon-purple);
+            color: black;
+            border: none;
+            border-radius: 60px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -84,7 +194,8 @@
     </footer>
 
     <script>
-        const PASSWORD = "degenboss2026"; // CHANGE THIS!
+        // CHANGE THIS TO A STRONG PASSWORD!
+        const PASSWORD = "degenboss2026";
 
         document.getElementById('password-btn').addEventListener('click', function() {
             if (document.getElementById('password-input').value === PASSWORD) {
@@ -155,7 +266,23 @@
             localStorage.setItem('degenOrders', JSON.stringify(orders));
         }
 
-        // Keep other update functions (status, tracking, notes)
+        function updateStatus(orderId, status) {
+            const order = orders.find(o => o.orderId === orderId);
+            if (order) order.status = status;
+            localStorage.setItem('degenOrders', JSON.stringify(orders));
+        }
+
+        function updateTracking(orderId, tracking) {
+            const order = orders.find(o => o.orderId === orderId);
+            if (order) order.tracking = tracking;
+            localStorage.setItem('degenOrders', JSON.stringify(orders));
+        }
+
+        function updateNotes(orderId, notes) {
+            const order = orders.find(o => o.orderId === orderId);
+            if (order) order.notes = notes;
+            localStorage.setItem('degenOrders', JSON.stringify(orders));
+        }
 
         document.getElementById('addOrderForm').addEventListener('submit', function(e) {
             e.preventDefault();
